@@ -13,7 +13,8 @@
           "Microsoft.AspNetCore.Identity.UI": "6.0.9",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.10",
           "Microsoft.EntityFrameworkCore.Tools": "6.0.10",
-          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "6.0.10"
+          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "6.0.10",
+          "Newtonsoft.Json": "13.0.1"
         },
         "runtime": {
           "TieRenTournament.dll": {}

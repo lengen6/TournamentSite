@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using TieRenTournament.Models;
 using TieRenTournament.Utils;
+using Newtonsoft.Json;
 
 namespace TieRenTournament.Pages.Events
 {
@@ -19,23 +20,36 @@ namespace TieRenTournament.Pages.Events
 
         MatchMakingHelper helper = new MatchMakingHelper();
 
-        public List<Competitor> initial = new List<Competitor>();
+        public List<Competitor> Initial { get; set; }
+
+        public List<Competitor> Results { get; set; }
 
         public async Task<IActionResult> OnGetAsync()
+
+        {
+           
+            return Page();
+        }
+
+        public async Task<IActionResult> OnPostAsync()
         {
             if(_context.Competitor != null)
             {
-                initial = await _context.Competitor.ToListAsync();
+                Initial = await _context.Competitor.ToListAsync();
             }
 
-            if(initial.Count < 2)
+            if(Initial.Count < 2)
             {
                return RedirectToPage("/Competitors/Index");
             }
 
-            List<Competitor> results = helper.StartMatchMaking(initial);
+            Results = helper.StartMatchMaking(Initial);
 
-            return RedirectToPage("./Results", new { results = results});
+           
+            TempData["compList"] = JsonConvert.SerializeObject(Results);
+            
+
+            return RedirectToPage("./Results");
         }
 
 

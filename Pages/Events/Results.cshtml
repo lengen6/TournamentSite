@@ -4,3 +4,10 @@
 }
 
 <h1>This Is the Results Page</h1>
+
+<ul>
+    @foreach (var competitor in Model.Results)
+    {
+        <li>@competitor.FirstName @competitor.LastName</li>
+    }
+</ul>
