@@ -7,10 +7,10 @@ namespace TieRenTournament.Utils
     {
         //Declare the initial, winners, losers, and eliminated brackets as lists of competitors
 
-        public IList<Competitor> winners = new List<Competitor>();
-        public IList<Competitor> losers = new List<Competitor>();
-        public IList<Competitor> eliminated = new List<Competitor>();
-        public IList<Competitor> temp = new List<Competitor>();
+        public List<Competitor> winners = new List<Competitor>();
+        public List<Competitor> losers = new List<Competitor>();
+        public List<Competitor> eliminated = new List<Competitor>();
+        public List<Competitor> temp = new List<Competitor>();
 
 
         //Declare global variables
@@ -20,10 +20,10 @@ namespace TieRenTournament.Utils
         public int round = 1;
         public int match = 1;
 
-
+        Random bracketPicker = new Random();
 
         //Method for resetting previous participant after each round
-       
+
         public void ResetParticipant()
         {
             foreach (Competitor comp in winners)
@@ -52,7 +52,6 @@ namespace TieRenTournament.Utils
 
         public Competitor PickPlayer(List<Competitor> argBracket)
         {
-            Random bracketPicker = new Random();
             int compPick = bracketPicker.Next(argBracket.Count);
             Competitor comp = argBracket[compPick];
             argBracket.RemoveAt(compPick);
@@ -202,9 +201,117 @@ namespace TieRenTournament.Utils
 
                 match++;
 
-    
+
             }
 
         }
-    }
+
+        public List<Competitor> StartMatchMaking(List<Competitor> initial)
+        {
+
+                int startingBracket = initial.Count - 1;
+
+
+                //Check to see if there is an odd number of competitors in the initial bracket. If so randomly remove one and add them to the winners bracket. 
+                //This simulates a bye
+
+                if (initial.Count % 2 != 0)
+                {
+                    int currentPick = bracketPicker.Next(initial.Count);
+                    initial[currentPick].Byes++;
+                    winners.Add(initial[currentPick]);
+                    initial.RemoveAt(currentPick);
+                }
+
+                //Go through initial bracket grabbing two competitors at random and adding them to a match
+
+                while (initial.Count > 0)
+                {
+                    //Grab first player at random assign them to competitor 1 and remove them from the initial bracket
+
+                    compRed = PickPlayer(initial);
+
+                    //Grab second player at random assign them to competitor 2 and remove them from the initial bracket
+
+                    compBlue = PickPlayer(initial);
+
+                    //Now that competitors have been selected and the match is about to occur reset previous participant for everyone left in the bracket
+
+                    if (initial.Count > 0)
+                    {
+                        ResetLastMatch(initial);
+                    }
+
+                    Match(compRed, compBlue);
+
+                //increment match counter match
+
+                match++;                  
+
+                }
+
+                match = 1;
+                round++;
+
+
+                //Reset previous participant status
+
+                ResetParticipant();
+
+                //Run through brackets until all but one competitor is eliminated
+
+
+                while (eliminated.Count != startingBracket)
+                {
+
+                    //if the losers bracket is odd then one is selected at random to get a bye and move into the winners bracket
+                    //If the winners bracket they will be placed into is even they will not have a match this round but if it is odd then they will have a match
+                    // This ensures the least amount of byes possible
+
+                    if (losers.Count % 2 != 0)
+                    {
+                        int currentPick = bracketPicker.Next(losers.Count);
+
+                        if (winners.Count % 2 == 0)
+                        {
+                            losers[currentPick].PreviousParticipant = true;
+                            losers[currentPick].Byes++;
+                        }
+
+                        winners.Add(losers[currentPick]);
+                        losers.RemoveAt(currentPick);
+                    }
+
+                    if (losers.Count != 0)
+                    {
+                        RunBracket(losers);
+                    }
+
+                    RunBracket(winners);
+
+                    //Increment round and reset match
+
+                    match = 1;
+                    round++;
+
+                    ResetParticipant();
+                }
+
+                //Add the final winner to the eliminated bracket. This makes constructing the results output string with proper grammar easier
+
+                eliminated.Add(winners[0]);
+
+                //Reverse list and use index as each competitors place this needs to be done out side of the results button so that it isn't reveresed every time it's clicked
+
+                eliminated.Reverse();
+                
+                for(int i = 0; i < eliminated.Count; i++)
+            {
+                eliminated[i].Place = i + 1;
+            }
+
+                return eliminated;
+
+            }
+        }
 }

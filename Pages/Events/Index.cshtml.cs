@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using TieRenTournament.Models;
+using TieRenTournament.Utils;
 
 namespace TieRenTournament.Pages.Events
 {
@@ -16,7 +17,9 @@ namespace TieRenTournament.Pages.Events
             _context = context;
         }
 
-        public IList<Competitor> initial = new List<Competitor>();
+        MatchMakingHelper helper = new MatchMakingHelper();
+
+        public List<Competitor> initial = new List<Competitor>();
 
         public async Task<IActionResult> OnGetAsync()
         {
@@ -30,7 +33,9 @@ namespace TieRenTournament.Pages.Events
                return RedirectToPage("/Competitors/Index");
             }
 
-            return RedirectToPage("./Results");
+            List<Competitor> results = helper.StartMatchMaking(initial);
+
+            return RedirectToPage("./Results", new { results = results});
         }
 
 
