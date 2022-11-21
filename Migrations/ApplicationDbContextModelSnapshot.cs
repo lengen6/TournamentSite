@@ -8,7 +8,7 @@ using TieRenTournament.Data;
 
 #nullable disable
 
-namespace TieRenTournament.Data.Migrations
+namespace TieRenTournament.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -259,6 +259,55 @@ namespace TieRenTournament.Data.Migrations
                     b.ToTable("Competitor");
                 });
 
+            modelBuilder.Entity("TieRenTournament.Models.Match", b =>
+                {
+                    b.Property<int>("MatchId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MatchId"), 1L, 1);
+
+                    b.Property<int?>("CompeitorBlueCompetitorId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CompeitorRedCompetitorId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CompetitorBlueId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CompetitorBlueScore")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CompetitorRedId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CompetitorRedScore")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Duration")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MatchNumber")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Round")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("WinnerId")
+                        .HasColumnType("int");
+
+                    b.HasKey("MatchId");
+
+                    b.HasIndex("CompeitorBlueCompetitorId");
+
+                    b.HasIndex("CompeitorRedCompetitorId");
+
+                    b.HasIndex("WinnerId");
+
+                    b.ToTable("Match");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -308,6 +357,27 @@ namespace TieRenTournament.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("TieRenTournament.Models.Match", b =>
+                {
+                    b.HasOne("TieRenTournament.Models.Competitor", "CompeitorBlue")
+                        .WithMany()
+                        .HasForeignKey("CompeitorBlueCompetitorId");
+
+                    b.HasOne("TieRenTournament.Models.Competitor", "CompeitorRed")
+                        .WithMany()
+                        .HasForeignKey("CompeitorRedCompetitorId");
+
+                    b.HasOne("TieRenTournament.Models.Competitor", "Winner")
+                        .WithMany()
+                        .HasForeignKey("WinnerId");
+
+                    b.Navigation("CompeitorBlue");
+
+                    b.Navigation("CompeitorRed");
+
+                    b.Navigation("Winner");
                 });
 #pragma warning restore 612, 618
         }

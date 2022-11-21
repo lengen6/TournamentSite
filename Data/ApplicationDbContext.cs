@@ -10,6 +10,8 @@ namespace TieRenTournament.Data
             : base(options)
         {
         }
+        public DbSet<TieRenTournament.Models.Match> Match { get; set; }
         public DbSet<TieRenTournament.Models.Competitor> Competitor { get; set; }
+        
     }
 }
