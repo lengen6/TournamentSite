@@ -5,15 +5,24 @@ namespace TieRenTournament.Utils
 {
     public class MatchMakingHelper
     {
-        //Declare the initial, winners, losers, and eliminated brackets as lists of competitors
+        private static TieRenTournament.Data.ApplicationDbContext _context;
 
-        public List<Competitor> winners = new List<Competitor>();
-        public List<Competitor> losers = new List<Competitor>();
-        public List<Competitor> eliminated = new List<Competitor>();
+        public MatchMakingHelper(TieRenTournament.Data.ApplicationDbContext context)
+        {
+            _context = context;
+        }
+        public List<Initial> Initial { get; set; }
+        public List<Winner> Winners { get; set; }
+        public List<Loser> Losers { get; set; }
+        public List<Eliminated> Eliminated { get; set; }
         public List<Competitor> temp = new List<Competitor>();
 
-
-        //Declare global variables
+        public MatchMakingHelper(List<Initial> initial, List<Winner> winners, List<Loser> losers, List<Eliminated> eliminated){
+            Initial = initial;
+            Winners = winners;
+            Losers = losers;
+            Eliminated = eliminated;
+        }
 
         public Competitor compRed;
         public Competitor compBlue;
@@ -26,12 +35,12 @@ namespace TieRenTournament.Utils
 
         public void ResetParticipant()
         {
-            foreach (Competitor comp in winners)
+            foreach (Competitor comp in Winners)
             {
                 comp.PreviousParticipant = false;
             }
 
-            foreach (Competitor comp in losers)
+            foreach (Competitor comp in Losers)
             {
                 comp.PreviousParticipant = false;
             }
@@ -58,11 +67,11 @@ namespace TieRenTournament.Utils
             return comp;
         }
 
-        //Method for determining winners and losers before integration with the scorekeeping app
+        //Method for determining Winners and Losers before integration with the scorekeeping app
         //I kept this method in case testing ever needs to be done on the bracket portion of the app in the future
         public void Match(Competitor argcompRed, Competitor argcompBlue)
         {
-            //Flip a coin and determine winners based on it. 0 is a win 1 is a loss
+            //Flip a coin and determine Winners based on it. 0 is a win 1 is a loss
 
             Random coinFlip = new Random();
 
@@ -78,15 +87,15 @@ namespace TieRenTournament.Utils
                 argcompRed.Wins++;
                 argcompBlue.Losses++;
 
-                winners.Add(argcompRed);
+                Winners.Add((Winner)argcompRed);
 
                 if (argcompBlue.Losses > 1)
                 {
-                    eliminated.Add(argcompBlue);
+                    Eliminated.Add((Eliminated)argcompBlue);
                 }
                 else
                 {
-                    losers.Add(argcompBlue);
+                    Losers.Add((Loser)argcompBlue);
                 }
             }
             else
@@ -94,15 +103,15 @@ namespace TieRenTournament.Utils
                 argcompBlue.Wins++;
                 argcompRed.Losses++;
 
-                winners.Add(argcompBlue);
+                Winners.Add((Winner)argcompBlue);
 
                 if (argcompRed.Losses > 1)
                 {
-                    eliminated.Add(argcompRed);
+                    Eliminated.Add((Eliminated)argcompRed);
                 }
                 else
                 {
-                    losers.Add(argcompRed);
+                    Losers.Add((Loser)argcompRed);
                 }
             }
 
@@ -129,7 +138,7 @@ namespace TieRenTournament.Utils
 
             //Conduct all the matches in a bracket
 
-            //Loop through bracket and determine winners
+            //Loop through bracket and determine Winners
             if (numNonPreviousParts >= 2)
             {
                 if (numNonPreviousParts >= 4)
@@ -193,7 +202,7 @@ namespace TieRenTournament.Utils
 
                 ResetLastMatch(argBracket);
 
-                //Create and show form 2 for the match to occur
+                //Align local brackets with database brackets by dropping the tables and setting them to the local brackets
 
                 Match(compRed, compBlue);
 
@@ -206,111 +215,97 @@ namespace TieRenTournament.Utils
 
         }
 
-        public List<Competitor> StartMatchMaking(List<Competitor> initial)
+        public async void StartMatchmaking(List<Competitor> initial)
+        {
+            foreach(Winner competitor in initial)
+            {
+                _context.Competitor.Attach(competitor);
+            }
+
+            await _context.SaveChangesAsync();
+        }
+
+        public bool ContinueMatchMaking(List<Competitor> totalcomps)
         {
 
-                int startingBracket = initial.Count - 1;
+                int startingBracket = totalcomps.Count - 1;
 
-
-                //Check to see if there is an odd number of competitors in the initial bracket. If so randomly remove one and add them to the winners bracket. 
-                //This simulates a bye
-
-                if (initial.Count % 2 != 0)
-                {
-                    int currentPick = bracketPicker.Next(initial.Count);
-                    initial[currentPick].Byes++;
-                    winners.Add(initial[currentPick]);
-                    initial.RemoveAt(currentPick);
-                }
-
-                //Go through initial bracket grabbing two competitors at random and adding them to a match
-
-                while (initial.Count > 0)
-                {
-                    //Grab first player at random assign them to competitor 1 and remove them from the initial bracket
-
-                    compRed = PickPlayer(initial);
-
-                    //Grab second player at random assign them to competitor 2 and remove them from the initial bracket
-
-                    compBlue = PickPlayer(initial);
-
-                    //Now that competitors have been selected and the match is about to occur reset previous participant for everyone left in the bracket
-
-                    if (initial.Count > 0)
-                    {
-                        ResetLastMatch(initial);
-                    }
-
-                    Match(compRed, compBlue);
-
-                //increment match counter match
-
-                match++;                  
-
-                }
-
-                match = 1;
-                round++;
-
-
-                //Reset previous participant status
-
-                ResetParticipant();
-
-                //Run through brackets until all but one competitor is eliminated
-
-
-                while (eliminated.Count != startingBracket)
+                while (Eliminated.Count != startingBracket)
                 {
 
-                    //if the losers bracket is odd then one is selected at random to get a bye and move into the winners bracket
-                    //If the winners bracket they will be placed into is even they will not have a match this round but if it is odd then they will have a match
+                    //if the Losers bracket is odd then one is selected at random to get a bye and move into the Winners bracket
+                    //If the Winners bracket they will be placed into is even they will not have a match this round but if it is odd then they will have a match
                     // This ensures the least amount of byes possible
 
-                    if (losers.Count % 2 != 0)
+                    if (Losers.Count % 2 != 0)
                     {
-                        int currentPick = bracketPicker.Next(losers.Count);
+                        int currentPick = bracketPicker.Next(Losers.Count);
 
-                        if (winners.Count % 2 == 0)
+                        if (Winners.Count % 2 == 0)
                         {
-                            losers[currentPick].PreviousParticipant = true;
-                            losers[currentPick].Byes++;
+                            Losers[currentPick].PreviousParticipant = true;
+                            Losers[currentPick].Byes++;
                         }
 
-                        winners.Add(losers[currentPick]);
-                        losers.RemoveAt(currentPick);
+                        Competitor compToSwitch = Losers[currentPick];
+
+                        Winners.Add((Winner)compToSwitch);
+                        Losers.RemoveAt(currentPick);
                     }
 
-                    if (losers.Count != 0)
+                    if (Losers.Count != 0)
                     {
-                        RunBracket(losers);
+                        List<Competitor> tempLosers = new List<Competitor>();
+                        foreach (Competitor comp in Losers)
+                        {
+                            tempLosers.Add(comp);
+                        }
+
+                        RunBracket(tempLosers);
+                        Losers.Clear();
+
+                        foreach(Loser loser in tempLosers)
+                        {
+                            Losers.Add(loser);
+                        }
                     }
 
-                    RunBracket(winners);
+                List<Competitor> tempWinners = new List<Competitor>();
+                foreach (Competitor comp in Winners)
+                {
+                    tempWinners.Add(comp);
+                }
 
-                    //Increment round and reset match
+                RunBracket(tempWinners);
+                Winners.Clear();
 
-                    match = 1;
+                foreach (Winner winner in tempWinners)
+                {
+                    Winners.Add(winner);
+                }
+
+                //Increment round and reset match
+
+                match = 1;
                     round++;
 
                     ResetParticipant();
                 }
 
-                //Add the final winner to the eliminated bracket. This makes constructing the results output string with proper grammar easier
+            //Add the final winner to the Eliminated bracket. This makes constructing the results output string with proper grammar easier
 
-                eliminated.Add(winners[0]);
 
-                //Reverse list and use index as each competitors place this needs to be done out side of the results button so that it isn't reveresed every time it's clicked
+                Competitor compToSwitchTwo = Winners[0];
 
-                eliminated.Reverse();
+                Eliminated.Add((Eliminated)compToSwitchTwo);
+
+           //Reverse list and use index as each competitors place this needs to be done out side of the results button so that it isn't reveresed every time it's clicked
+
+                Eliminated.Reverse();
                 
-                for(int i = 0; i < eliminated.Count; i++)
-            {
-                eliminated[i].Place = i + 1;
-            }
+           //*****TODO Update all tables
 
-                return eliminated;
+                return true;
 
             }
         }

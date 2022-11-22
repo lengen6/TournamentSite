@@ -12,6 +12,10 @@ namespace TieRenTournament.Data
         }
         public DbSet<TieRenTournament.Models.Match> Match { get; set; }
         public DbSet<TieRenTournament.Models.Competitor> Competitor { get; set; }
-        
+        public DbSet<TieRenTournament.Models.Initial> Initial { get; set; }
+        public DbSet<TieRenTournament.Models.Winner> Winner { get; set; }
+        public DbSet<TieRenTournament.Models.Loser> Loser { get; set; }
+        public DbSet<TieRenTournament.Models.Eliminated> Eliminated { get; set; }
+
     }
 }
