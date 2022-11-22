@@ -22,6 +22,7 @@ namespace TieRenTournament.Models
         public int Losses { get; set; } = 0;
         public int Byes { get; set; } = 0;
         public int Place { get; set; } = 0;
+        public string Bracket { get; set; } = "Winner";
         [NotMapped]
         public bool PreviousParticipant { get; set; } = false;
         [NotMapped]

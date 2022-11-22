@@ -232,12 +232,12 @@ namespace TieRenTournament.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CompetitorId"), 1L, 1);
 
-                    b.Property<int>("Byes")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Discriminator")
+                    b.Property<string>("Bracket")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Byes")
+                        .HasColumnType("int");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -261,8 +261,6 @@ namespace TieRenTournament.Migrations
                     b.HasKey("CompetitorId");
 
                     b.ToTable("Competitor");
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("Competitor");
                 });
 
             modelBuilder.Entity("TieRenTournament.Models.Match", b =>
@@ -312,34 +310,6 @@ namespace TieRenTournament.Migrations
                     b.HasIndex("WinnerId");
 
                     b.ToTable("Match");
-                });
-
-            modelBuilder.Entity("TieRenTournament.Models.Eliminated", b =>
-                {
-                    b.HasBaseType("TieRenTournament.Models.Competitor");
-
-                    b.HasDiscriminator().HasValue("Eliminated");
-                });
-
-            modelBuilder.Entity("TieRenTournament.Models.Initial", b =>
-                {
-                    b.HasBaseType("TieRenTournament.Models.Competitor");
-
-                    b.HasDiscriminator().HasValue("Initial");
-                });
-
-            modelBuilder.Entity("TieRenTournament.Models.Loser", b =>
-                {
-                    b.HasBaseType("TieRenTournament.Models.Competitor");
-
-                    b.HasDiscriminator().HasValue("Loser");
-                });
-
-            modelBuilder.Entity("TieRenTournament.Models.Winner", b =>
-                {
-                    b.HasBaseType("TieRenTournament.Models.Competitor");
-
-                    b.HasDiscriminator().HasValue("Winner");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
