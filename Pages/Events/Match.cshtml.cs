@@ -19,7 +19,7 @@ namespace TieRenTournament.Pages.Events
         public Competitor? BlueComp { get; set; }
         [BindProperty]
         public bool RedWins { get; set; }
-        public void OnGetAsync()
+        public void OnGet()
         {
             if(_context.Competitor != null)
             {

@@ -317,7 +317,7 @@ namespace TieRenTournament.Utils
 
             for(int i = 0; i < Eliminated.Count; i++)
             {
-                Eliminated[i].Place = (i + 1);
+                Eliminated[i].Place = (i + 2);
             }
             
             AlignLocalStateToDB(Winners, Losers, Eliminated);

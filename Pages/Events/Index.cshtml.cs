@@ -25,6 +25,7 @@ namespace TieRenTournament.Pages.Events
 
         public List<Competitor> Losers { get; set; }
         public List<Competitor> Eliminated { get; set; }
+        public List<Competitor> Byes { get; set; }
         public List<Competitor> PreviousParticipants { get; set; }
         public Competitor compRed;
         public Competitor compBlue;
@@ -40,22 +41,7 @@ namespace TieRenTournament.Pages.Events
                 Winners = await _context.Competitor.Where(w => w.Bracket == "Winner").ToListAsync();
                 Losers = await _context.Competitor.Where(l => l.Bracket == "Loser").ToListAsync();
                 Eliminated = await _context.Competitor.Where(e => e.Bracket == "Eliminated").ToListAsync();
-                PreviousParticipants = await _context.Competitor.Where(b => b.PreviousParticipant == true).ToListAsync();
-            }
-            
-
-            if (Losers.Count > 1)
-            {
-                DetermineByes(Losers);
-                if (!IsBracketFinished(Losers))
-                {
-                    if (ArrangeMatch(Losers))
-                    {
-                        AlignLocalStateToDB(Winners, Losers, Eliminated);
-                        return RedirectToPage("./Match");
-                    }
-                   
-                }
+                Byes = await _context.Competitor.Where(b => b.Bracket == "Bye").ToListAsync();
             }
 
             if (Winners.Count > 1)
@@ -72,6 +58,35 @@ namespace TieRenTournament.Pages.Events
                 }
             }
 
+            if (Losers.Count > 1)
+            {
+                DetermineByes(Losers);
+                if (!IsBracketFinished(Losers))
+                {
+                    if (ArrangeMatch(Losers))
+                    {
+                        AlignLocalStateToDB(Winners, Losers, Eliminated);
+                        return RedirectToPage("./Match");
+                    }
+
+                }
+            }
+
+            if (Byes.Count > 1)
+            {
+                    foreach(Competitor comp in Byes)
+                {
+                    comp.Byes--;
+                    comp.PreviousParticipant = false;
+                }
+
+                    if (ArrangeMatch(Byes))
+                    {
+                        AlignLocalStateToDB(Winners, Losers, Eliminated);
+                        return RedirectToPage("./Match");
+                    } 
+            }
+
             bool RoundOver = IsRoundOver();
 
             if(RoundOver)
@@ -83,6 +98,12 @@ namespace TieRenTournament.Pages.Events
 
             if(Eliminated.Count == Competitors.Count - 1)
             {
+                Winners[0].Place = 1;
+                Eliminated.Reverse();
+                for (int i = 0; i < Eliminated.Count; i++)
+                {
+                    Eliminated[i].Place = (i + 2);
+                }
                 AlignLocalStateToDB(Winners, Losers, Eliminated);
                 return RedirectToPage("./Results");
             }
