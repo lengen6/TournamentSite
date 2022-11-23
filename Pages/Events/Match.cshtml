@@ -9,11 +9,7 @@
 <h3>Blue Competitor: @Model.BlueComp.FirstName @Model.BlueComp.LastMatch</h3>
 
 <form method="post">
-    <input asp-for="RedWins" value="true" />
-    <input type="submit" value="Red Wins" asp-page-handler="Match" />
-</form>
-
-<form method="post">
-    <input asp-for="BlueWins" value="true" />
-    <input type="submit" value="Blue Wins" asp-page-handler="Match" />
+    <input type="radio" asp-for="RedWins" value="true"/> Red Wins <br />
+    <input type="radio" asp-for="RedWins" value="false" /> Blue Wins <br />
+    <input type="submit" value="Submit Score" asp-page-handler="Match" />
 </form>

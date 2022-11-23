@@ -19,8 +19,6 @@ namespace TieRenTournament.Pages.Events
         public Competitor? BlueComp { get; set; }
         [BindProperty]
         public bool RedWins { get; set; }
-        [BindProperty]
-        public bool BlueWins { get; set; }
         public void OnGetAsync()
         {
             if(_context.Competitor != null)
@@ -68,7 +66,7 @@ namespace TieRenTournament.Pages.Events
                     {
                         BlueComp.Bracket = "Loser";
                     }
-                } else if (BlueWins)
+                } else if (!RedWins)
                 {
                     BlueComp.Wins++;
                     RedComp.Losses++;

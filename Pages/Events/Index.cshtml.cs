@@ -25,11 +25,7 @@ namespace TieRenTournament.Pages.Events
 
         public List<Competitor> Losers { get; set; }
         public List<Competitor> Eliminated { get; set; }
-        public List<Competitor> Initial { get; set; }
         public List<Competitor> PreviousParticipants { get; set; }
-
-        public List<Competitor> Byes { get; set; }
-        public List<Competitor> temp = new List<Competitor>();
         public Competitor compRed;
         public Competitor compBlue;
         public int round = 1;
@@ -48,24 +44,31 @@ namespace TieRenTournament.Pages.Events
             }
             
 
-            if (Losers.Count > 0)
+            if (Losers.Count > 1)
             {
                 DetermineByes(Losers);
                 if (!IsBracketFinished(Losers))
                 {
-                    ArrangeMatch(Losers);
+                    if (ArrangeMatch(Losers))
+                    {
+                        AlignLocalStateToDB(Winners, Losers, Eliminated);
+                        return RedirectToPage("./Match");
+                    }
+                   
                 }
             }
 
-            if (Winners.Count > 0)
+            if (Winners.Count > 1)
             {
                 DetermineByes(Winners);
-                bool isFinished = IsBracketFinished(Winners);
-                if (!isFinished)
+                if (!IsBracketFinished(Winners))
                 {
-                    ArrangeMatch(Winners);
-                    ConductMatch(compRed, compBlue);
-                    return RedirectToPage("./Match");
+                    if (ArrangeMatch(Winners))
+                    {
+                        AlignLocalStateToDB(Winners, Losers, Eliminated);
+                        return RedirectToPage("./Match");
+                    }
+                    
                 }
             }
 
@@ -93,9 +96,18 @@ namespace TieRenTournament.Pages.Events
         {
             bool isRoundOver = true;
 
-            foreach (Competitor comp in Competitors)
+            foreach (Competitor comp in Winners)
             {
                 
+                if (comp.PreviousParticipant == false)
+                {
+                    isRoundOver = false;
+                }
+            }
+
+            foreach (Competitor comp in Losers)
+            {
+
                 if (comp.PreviousParticipant == false)
                 {
                     isRoundOver = false;
@@ -116,17 +128,6 @@ namespace TieRenTournament.Pages.Events
             {
                 comp.PreviousParticipant = false;
             }
-        }
-
-        //Method to reset lastMatch status
-
-        public void ResetLastMatch(List<Competitor> argBracket)
-        {
-            foreach (Competitor remainingComp in argBracket)
-            {
-                remainingComp.LastMatch = false;
-            }
-
         }
 
         public bool IsBracketFinished(List<Competitor> bracket)
@@ -159,7 +160,7 @@ namespace TieRenTournament.Pages.Events
                if(bracket.Count % 2 != 0)
                 {
                     Random bracketPicker = new Random();
-                    int currentPick = bracketPicker.Next(Losers.Count);
+                    int currentPick = bracketPicker.Next(bracket.Count);
                     bracket[currentPick].Byes++;
                     bracket[currentPick].PreviousParticipant = true;
                 }
@@ -168,7 +169,7 @@ namespace TieRenTournament.Pages.Events
 
         }
 
-         public Competitor PickPlayerAndRemoveFromBracket(List<Competitor> argBracket)
+         public Competitor PickPlayer(List<Competitor> argBracket)
         {
             Random bracketPicker = new Random();
             int compPick = bracketPicker.Next(argBracket.Count);
@@ -177,60 +178,32 @@ namespace TieRenTournament.Pages.Events
             return comp;
         }
 
-        public void ArrangeMatch(List<Competitor> argBracket)
+        public bool ArrangeMatch(List<Competitor> argBracket)
         {
-           
-            
-        }
-
-        public IActionResult Match(Competitor argcompRed, Competitor argcompBlue)
-        {
-            //Flip a coin and determine Winners based on it. 0 is a win 1 is a loss
-
-            Random coinFlip = new Random();
-
-            //Set previous partipant and last match values
-
-            argcompRed.PreviousParticipant = true;
-            argcompRed.LastMatch = true;
-            argcompBlue.PreviousParticipant = true;
-            argcompBlue.LastMatch = true;
-
-            if (coinFlip.Next(2) == 0)
+            List<Competitor> viableCompetitors = new List<Competitor>();
+            foreach(Competitor comp in argBracket)
             {
-                argcompRed.Wins++;
-                argcompBlue.Losses++;
-
-                Winners.Add(argcompRed);
-
-                if (argcompBlue.Losses > 1)
+                if(comp.PreviousParticipant == false)
                 {
-                    Eliminated.Add(argcompBlue);
-                }
-                else
-                {
-                    Losers.Add(argcompBlue);
-                }
-            }
-            else
-            {
-                argcompBlue.Wins++;
-                argcompRed.Losses++;
-
-                Winners.Add(argcompBlue);
-
-                if (argcompRed.Losses > 1)
-                {
-                    Eliminated.Add(argcompRed);
-                }
-                else
-                {
-                    Losers.Add(argcompRed);
+                    viableCompetitors.Add(comp);
                 }
             }
 
-            AlignLocalStateToDB(Winners, Losers, Eliminated);
-            return RedirectToPage("./Index");
+            if(viableCompetitors.Count > 1)
+            {
+                compRed = PickPlayer(viableCompetitors);
+                compBlue = PickPlayer(viableCompetitors);
+                compRed.IsRedComp = true;
+                compBlue.IsBlueComp = true;
+                return true;
+            } else if (viableCompetitors[0] != null)
+            {
+                viableCompetitors[0].Byes++;
+                viableCompetitors[0].PreviousParticipant = true;
+                return false;
+            }
+
+            return true;
         }
 
         public void AlignLocalStateToDB(List<Competitor> winnersToSave, List<Competitor> losersToSave, List<Competitor> eliminatedToSave)
@@ -266,14 +239,5 @@ namespace TieRenTournament.Pages.Events
             _context.SaveChanges();
         }
 
-        public void ConductMatch(Competitor compRed, Competitor compBlue)
-        {
-            //Asign Match participants by changing model field
-
-            compRed.IsRedComp = true;
-            compBlue.IsBlueComp = true;
-
-            AlignLocalStateToDB(Winners, Losers, Eliminated);
-        }
     }
 }
