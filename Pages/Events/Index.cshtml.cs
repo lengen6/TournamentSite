@@ -51,6 +51,7 @@ namespace TieRenTournament.Pages.Events
                 {
                     if (ArrangeMatch(Winners))
                     {
+                        match++;
                         AlignLocalStateToDB(Winners, Losers, Eliminated);
                         return RedirectToPage("./Match");
                     }
@@ -65,6 +66,7 @@ namespace TieRenTournament.Pages.Events
                 {
                     if (ArrangeMatch(Losers))
                     {
+                        match++;
                         AlignLocalStateToDB(Winners, Losers, Eliminated);
                         return RedirectToPage("./Match");
                     }
@@ -82,6 +84,7 @@ namespace TieRenTournament.Pages.Events
 
                     if (ArrangeMatch(Byes))
                     {
+                        match++;
                         AlignLocalStateToDB(Winners, Losers, Eliminated);
                         return RedirectToPage("./Match");
                     } 
@@ -91,6 +94,7 @@ namespace TieRenTournament.Pages.Events
 
             if(RoundOver)
             {
+                round++;
                 ResetParticipant();
                 AlignLocalStateToDB(Winners, Losers, Eliminated);
                 return RedirectToPage("./Index");
