@@ -25,9 +25,8 @@ namespace TieRenTournament.Models
         public bool IsRedComp { get; set; } = false;
         public bool IsBlueComp { get; set; } = false;
         public string Bracket { get; set; } = "Winner";
-        [NotMapped]
+       
         public bool PreviousParticipant { get; set; } = false;
-        [NotMapped]
         public bool LastMatch { get; set; } = false;
     }
 }

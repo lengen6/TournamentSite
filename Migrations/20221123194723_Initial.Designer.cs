@@ -12,7 +12,7 @@ using TieRenTournament.Data;
 namespace TieRenTournament.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221123000437_Initial")]
+    [Migration("20221123194723_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -252,6 +252,9 @@ namespace TieRenTournament.Migrations
                     b.Property<bool>("IsRedComp")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("LastMatch")
+                        .HasColumnType("bit");
+
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasMaxLength(25)
@@ -262,6 +265,9 @@ namespace TieRenTournament.Migrations
 
                     b.Property<int>("Place")
                         .HasColumnType("int");
+
+                    b.Property<bool>("PreviousParticipant")
+                        .HasColumnType("bit");
 
                     b.Property<int>("Wins")
                         .HasColumnType("int");

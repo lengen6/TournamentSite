@@ -1,0 +1,19 @@
+﻿@page
+@model TieRenTournament.Pages.Events.MatchModel
+@{
+}
+
+<h1>This is the Score Keeping/Timer Page</h1>
+
+<h3>Red Competitor: @Model.RedComp.FirstName @Model.RedComp.LastMatch</h3>
+<h3>Blue Competitor: @Model.BlueComp.FirstName @Model.BlueComp.LastMatch</h3>
+
+<form method="post">
+    <input asp-for="RedWins" value="true" />
+    <input type="submit" value="Red Wins" asp-page-handler="Match" />
+</form>
+
+<form method="post">
+    <input asp-for="BlueWins" value="true" />
+    <input type="submit" value="Blue Wins" asp-page-handler="Match" />
+</form>

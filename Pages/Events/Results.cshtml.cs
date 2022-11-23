@@ -39,6 +39,8 @@ namespace TieRenTournament.Pages.Events
                 competitor.Byes = 0;
                 competitor.Wins = 0;
                 competitor.Losses = 0;
+                competitor.IsRedComp = false;
+                competitor.IsBlueComp = false;
                 _context.Competitor.Attach(competitor);
             }
 

@@ -14,6 +14,7 @@ namespace TieRenTournament.Utils
         public List<Competitor> Losers { get; set; }
         public List<Competitor> Eliminated { get; set; }
         public List<Competitor> temp = new List<Competitor>();
+        public List<Competitor> Next = new List<Competitor>();
 
         public MatchMakingHelper(List<Competitor> winners, List<Competitor> losers, List<Competitor> eliminated, ApplicationDbContext context)
         {
@@ -236,17 +237,28 @@ namespace TieRenTournament.Utils
 
                 ResetLastMatch(argBracket);
 
-                //Align local brackets with database brackets by dropping the tables and setting them to the local brackets
-
-                AlignLocalStateToDB(Winners, Losers, Eliminated);
                 Match(compRed, compBlue);
+                //MatchRedirect(compRed, compBlue);
 
                 //Increment match counter
-
                 match++;
 
             }
             
+            return new RedirectResult("/Events/Index");
+        }
+
+        public ActionResult MatchRedirect(Competitor compRed, Competitor compBlue)
+        {
+            //Asign Match participants by changing model field
+
+            compRed.IsRedComp = true;
+            compBlue.IsBlueComp = true;
+
+            //Align local brackets with database brackets
+
+            AlignLocalStateToDB(Winners, Losers, Eliminated);
+
             return new RedirectResult("/Events/Index");
         }
 

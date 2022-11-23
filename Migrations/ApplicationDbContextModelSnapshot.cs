@@ -250,6 +250,9 @@ namespace TieRenTournament.Migrations
                     b.Property<bool>("IsRedComp")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("LastMatch")
+                        .HasColumnType("bit");
+
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasMaxLength(25)
@@ -260,6 +263,9 @@ namespace TieRenTournament.Migrations
 
                     b.Property<int>("Place")
                         .HasColumnType("int");
+
+                    b.Property<bool>("PreviousParticipant")
+                        .HasColumnType("bit");
 
                     b.Property<int>("Wins")
                         .HasColumnType("int");
