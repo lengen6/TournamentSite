@@ -60,6 +60,8 @@ namespace TieRenTournament.Migrations
                     Losses = table.Column<int>(type: "int", nullable: false),
                     Byes = table.Column<int>(type: "int", nullable: false),
                     Place = table.Column<int>(type: "int", nullable: false),
+                    IsRedComp = table.Column<bool>(type: "bit", nullable: false),
+                    IsBlueComp = table.Column<bool>(type: "bit", nullable: false),
                     Bracket = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>

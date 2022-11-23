@@ -38,7 +38,7 @@ namespace TieRenTournament.Pages.Events
             MatchMakingHelper helper = new MatchMakingHelper(Winners, Losers, Eliminated, _context);
 
           
-                if(helper.ContinueMatchMaking(Competitors) == true)
+                if(helper.MatchMaking(Competitors) == true)
                 {
                     return RedirectToPage("./Results");
                 }

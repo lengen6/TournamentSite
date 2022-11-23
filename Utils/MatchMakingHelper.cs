@@ -10,7 +10,6 @@ namespace TieRenTournament.Utils
     public class MatchMakingHelper
     {
         ApplicationDbContext Context { get; set; }
-        public List<Competitor> Initial { get; set; }
         public List<Competitor> Winners { get; set; }
         public List<Competitor> Losers { get; set; }
         public List<Competitor> Eliminated { get; set; }
@@ -35,8 +34,6 @@ namespace TieRenTournament.Utils
 
         public void AlignLocalStateToDB(List<Competitor> winnersToSave, List<Competitor> losersToSave, List<Competitor> eliminatedToSave)
         {
-            //await Context.Database.ExecuteSqlRawAsync("TRUNCATE TABLE Competitor");
-            //await Context.SaveChangesAsync();
 
           if(winnersToSave.Count > 0)
             {
@@ -65,7 +62,7 @@ namespace TieRenTournament.Utils
                 }
             }
 
-            Context.SaveChangesAsync();
+            Context.SaveChanges();
         }
 
         public void ResetParticipant()
@@ -156,7 +153,7 @@ namespace TieRenTournament.Utils
 
         //Method for running through a bracket
 
-        public IActionResult RunBracket(List<Competitor> argBracket)
+        public ActionResult RunBracket(List<Competitor> argBracket)
         {
             int numNonPreviousParts = 0;
 
@@ -253,7 +250,7 @@ namespace TieRenTournament.Utils
             return new RedirectResult("/Events/Index");
         }
 
-        public bool ContinueMatchMaking(List<Competitor> totalcomps)
+        public bool MatchMaking(List<Competitor> totalcomps)
         {
 
                 int startingBracket = totalcomps.Count - 1;
@@ -275,9 +272,7 @@ namespace TieRenTournament.Utils
                             Losers[currentPick].Byes++;
                         }
 
-                        Competitor compToSwitch = Losers[currentPick];
-
-                        Winners.Add(compToSwitch);
+                        Winners.Add(Losers[currentPick]);
                         Losers.RemoveAt(currentPick);
                     }
 
@@ -299,11 +294,8 @@ namespace TieRenTournament.Utils
                 }
 
             //Add the final winner to the Eliminated bracket. This makes constructing the results output string with proper grammar easier
-
-
-            Competitor compToSwitchTwo = Winners[0];
-
-            Eliminated.Add(compToSwitchTwo);
+            Winners[0].Bracket = "Eliminated";
+            Eliminated.Add(Winners[0]);
 
             Winners.Clear();
 
@@ -313,13 +305,11 @@ namespace TieRenTournament.Utils
 
             for(int i = 0; i < Eliminated.Count; i++)
             {
-                Eliminated[i].Place = i + 1;
+                Eliminated[i].Place = (i + 1);
             }
-
+            
             AlignLocalStateToDB(Winners, Losers, Eliminated);
-           //*****TODO Update all tables
-
-                return true;
+            return true;
 
             }
         }

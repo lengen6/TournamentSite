@@ -244,6 +244,12 @@ namespace TieRenTournament.Migrations
                         .HasMaxLength(25)
                         .HasColumnType("nvarchar(25)");
 
+                    b.Property<bool>("IsBlueComp")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsRedComp")
+                        .HasColumnType("bit");
+
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasMaxLength(25)

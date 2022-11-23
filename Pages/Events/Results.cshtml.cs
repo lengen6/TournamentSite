@@ -20,7 +20,7 @@ namespace TieRenTournament.Pages.Events
         public void OnGetAsync()
         {
             
-            Results = _context.Competitor.ToList();
+            Results = _context.Competitor.OrderBy(c => c.Place).ToList();
             
         }
 
