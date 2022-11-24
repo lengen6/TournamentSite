@@ -28,11 +28,14 @@ namespace TieRenTournament.Pages.Events
         public List<Competitor> Byes { get; set; }
         public List<Competitor> PreviousParticipants { get; set; }
         [FromQuery(Name = "elimination")]
-        public int Elimination { get; set; } 
+        public int Elimination { get; set; }
+        [FromQuery(Name = "match")]
+        public int Match { get; set; }
+        [FromQuery(Name = "round")]
+        public int Round { get; set; }
+
         public Competitor compRed;
         public Competitor compBlue;
-        public int round = 1;
-        public int match = 1;
 
         public async Task<IActionResult> OnGetAsync()
         {
@@ -60,25 +63,27 @@ namespace TieRenTournament.Pages.Events
 
             if (Winners.Count == 1 && Losers.Count == 1)
             {
+                IsFirstRound();
                 compRed = Winners[0];
                 compBlue = Losers[0];
                 compRed.IsRedComp = true;
                 compBlue.IsBlueComp = true;
-                match++;
+                Match++;
                 AlignLocalStateToDB(Winners, Losers, Eliminated, Byes);
-                return RedirectToPage("./Match", new {elimination = Elimination});
+                return RedirectToPage("./Match", new {elimination = Elimination, match = Match, round = Round});
             }
 
             if (Winners != null)
             {
+                IsFirstRound();
                 DetermineByes(Winners);
                 if (!IsBracketFinished(Winners))
                 {
                     if (ArrangeMatch(Winners))
                     {
-                        match++;
+                        Match++;
                         AlignLocalStateToDB(Winners, Losers, Eliminated,Byes);
-                        return RedirectToPage("./Match", new { elimination = Elimination });
+                        return RedirectToPage("./Match", new { elimination = Elimination, match = Match, round = Round });
                     }
                     
                 }
@@ -86,14 +91,15 @@ namespace TieRenTournament.Pages.Events
 
             if (Losers != null)
             {
+                IsFirstRound();
                 DetermineByes(Losers);
                 if (!IsBracketFinished(Losers))
                 {
                     if (ArrangeMatch(Losers))
                     {
-                        match++;
+                        Match++;
                         AlignLocalStateToDB(Winners, Losers, Eliminated, Byes);
-                        return RedirectToPage("./Match", new { elimination = Elimination });
+                        return RedirectToPage("./Match", new { elimination = Elimination, match = Match, round = Round });
                     }
 
                 }
@@ -107,6 +113,7 @@ namespace TieRenTournament.Pages.Events
 
             if (Byes.Count > 1)
             {
+                IsFirstRound();
                 foreach (Competitor comp in Byes)
                 {
                     comp.Byes--;
@@ -115,9 +122,9 @@ namespace TieRenTournament.Pages.Events
 
                 if (ArrangeMatch(Byes))
                 {
-                    match++;
+                    Match++;
                     AlignLocalStateToDB(Winners, Losers, Eliminated, Byes);
-                    return RedirectToPage("./Match", new { elimination = Elimination });
+                    return RedirectToPage("./Match", new { elimination = Elimination, match = Match, round = Round });
                 }
             }          
 
@@ -125,17 +132,24 @@ namespace TieRenTournament.Pages.Events
 
             if(RoundOver)
             {
-                round++;
+                Match = 0;
+                Round++;
                 ResetParticipant();
                 AlignLocalStateToDB(Winners, Losers, Eliminated, Byes);
-                return RedirectToPage("./Index", new { elimination = Elimination });
+                return RedirectToPage("./Index", new { elimination = Elimination, match = Match, round = Round });
             }
             
             return Redirect("~/");
         }
 
         //Class Methods go here
-
+        public void IsFirstRound()
+        {
+            if(Round == 0)
+            {
+                Round++;
+            }
+        }
         public bool IsRoundOver()
         {
             bool isRoundOver = true;

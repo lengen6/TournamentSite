@@ -17,13 +17,17 @@ namespace TieRenTournament.Pages.Events
         }
         [FromQuery(Name = "elimination")]
         public int Elimination { get; set; }
+        [FromQuery(Name = "match")]
+        public int Match { get; set; }
+        [FromQuery(Name = "round")]
+        public int Round { get; set; } = 1;
         public Competitor? RedComp { get; set; }
         public Competitor? BlueComp { get; set; }
         [BindProperty]
         public bool RedWins { get; set; }
         public void OnGet()
         {
-            if(_context.Competitor != null)
+            if (_context.Competitor != null)
             {
                 RedComp = _context.Competitor.Where(r => r.IsRedComp == true).FirstOrDefault();
                 BlueComp = _context.Competitor.Where(b => b.IsBlueComp == true).FirstOrDefault();
@@ -42,7 +46,7 @@ namespace TieRenTournament.Pages.Events
             }
         }
 
-        public IActionResult OnPost(int elimination)
+        public IActionResult OnPost(int elimination, int match, int round)
         {
             if (_context.Competitor != null)
             {
@@ -90,7 +94,7 @@ namespace TieRenTournament.Pages.Events
                 _context.SaveChanges();
             }
 
-            return RedirectToPage("./Index", new { elimination = elimination });
+            return RedirectToPage("./Index", new {elimination = elimination, match = match, round = round});
         }
     }
 }

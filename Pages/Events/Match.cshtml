@@ -3,7 +3,8 @@
 @{
 }
 
-<h1>This is the Score Keeping/Timer Page</h1>
+<h1>@Model.RedComp.Bracket's Bracket</h1>
+<h2>Round:@Model.Round Match:@Model.Match </h2>
 
 <h3>Red Competitor: @Model.RedComp.FirstName @Model.RedComp.LastMatch</h3>
 <h3>Blue Competitor: @Model.BlueComp.FirstName @Model.BlueComp.LastMatch</h3>
@@ -11,5 +12,5 @@
 <form method="post">
     <input type="radio" asp-for="RedWins" value="true"/> Red Wins <br />
     <input type="radio" asp-for="RedWins" value="false" /> Blue Wins <br />
-    <input type="submit" value="Submit Score" asp-page-handler="Match" asp-route-elimination="@Model.Elimination" />
+    <input type="submit" value="Submit Score" asp-page-handler="Match" asp-route-elimination="@Model.Elimination" asp-route-match = "@Model.Match" asp-route-round = "@Model.Round" />
 </form>
