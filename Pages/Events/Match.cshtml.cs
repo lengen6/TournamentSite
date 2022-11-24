@@ -16,7 +16,7 @@ namespace TieRenTournament.Pages.Events
             _context = context;
         }
         [FromQuery(Name = "elimination")]
-        public static int Elimination { get; set; }
+        public int Elimination { get; set; }
         public Competitor? RedComp { get; set; }
         public Competitor? BlueComp { get; set; }
         [BindProperty]
