@@ -27,6 +27,8 @@ namespace TieRenTournament.Pages.Events
         public List<Competitor> Eliminated { get; set; }
         public List<Competitor> Byes { get; set; }
         public List<Competitor> PreviousParticipants { get; set; }
+        [FromQuery(Name = "elimination")]
+        public int Elimination { get; set; } 
         public Competitor compRed;
         public Competitor compBlue;
         public int round = 1;
@@ -64,7 +66,7 @@ namespace TieRenTournament.Pages.Events
                 compBlue.IsBlueComp = true;
                 match++;
                 AlignLocalStateToDB(Winners, Losers, Eliminated, Byes);
-                return RedirectToPage("./Match");
+                return RedirectToPage("./Match", new {elimination = Elimination});
             }
 
             if (Winners != null)
@@ -76,7 +78,7 @@ namespace TieRenTournament.Pages.Events
                     {
                         match++;
                         AlignLocalStateToDB(Winners, Losers, Eliminated,Byes);
-                        return RedirectToPage("./Match");
+                        return RedirectToPage("./Match", new { elimination = Elimination });
                     }
                     
                 }
@@ -91,7 +93,7 @@ namespace TieRenTournament.Pages.Events
                     {
                         match++;
                         AlignLocalStateToDB(Winners, Losers, Eliminated, Byes);
-                        return RedirectToPage("./Match");
+                        return RedirectToPage("./Match", new { elimination = Elimination });
                     }
 
                 }
@@ -115,7 +117,7 @@ namespace TieRenTournament.Pages.Events
                 {
                     match++;
                     AlignLocalStateToDB(Winners, Losers, Eliminated, Byes);
-                    return RedirectToPage("./Match");
+                    return RedirectToPage("./Match", new { elimination = Elimination });
                 }
             }          
 
@@ -126,7 +128,7 @@ namespace TieRenTournament.Pages.Events
                 round++;
                 ResetParticipant();
                 AlignLocalStateToDB(Winners, Losers, Eliminated, Byes);
-                return RedirectToPage("./Index");
+                return RedirectToPage("./Index", new { elimination = Elimination });
             }
             
             return Redirect("~/");

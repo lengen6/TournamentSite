@@ -11,5 +11,5 @@
 <form method="post">
     <input type="radio" asp-for="RedWins" value="true"/> Red Wins <br />
     <input type="radio" asp-for="RedWins" value="false" /> Blue Wins <br />
-    <input type="submit" value="Submit Score" asp-page-handler="Match" />
+    <input type="submit" value="Submit Score" asp-page-handler="Match" asp-route-elimination="2" />
 </form>

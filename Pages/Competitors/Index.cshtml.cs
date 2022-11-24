@@ -23,6 +23,8 @@ namespace TieRenTournament.Pages.Competitors
 
         public IList<Competitor> Competitor { get;set; } = default!;
 
+        public int Elimination { get; set; } = 2;
+
         public async Task OnGetAsync()
         {
             if (_context.Competitor != null)

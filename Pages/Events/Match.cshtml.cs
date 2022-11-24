@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel;
 using TieRenTournament.Models;
@@ -14,7 +15,8 @@ namespace TieRenTournament.Pages.Events
         {
             _context = context;
         }
- 
+        [FromQuery(Name = "elimination")]
+        public static int Elimination { get; set; }
         public Competitor? RedComp { get; set; }
         public Competitor? BlueComp { get; set; }
         [BindProperty]
@@ -40,9 +42,8 @@ namespace TieRenTournament.Pages.Events
             }
         }
 
-        public IActionResult OnPost()
+        public IActionResult OnPost(int elimination)
         {
-
             if (_context.Competitor != null)
             {
                 RedComp = _context.Competitor.Where(r => r.IsRedComp == true).FirstOrDefault();
@@ -58,7 +59,7 @@ namespace TieRenTournament.Pages.Events
 
                     RedComp.Bracket = "Winner";
 
-                    if (BlueComp.Losses > 1)
+                    if (BlueComp.Losses >= elimination)
                     {
                         BlueComp.Bracket = "Eliminated";
                     }
@@ -73,7 +74,7 @@ namespace TieRenTournament.Pages.Events
 
                     BlueComp.Bracket = "Winner";
 
-                    if (RedComp.Losses > 1)
+                    if (RedComp.Losses >= elimination)
                     {
                         RedComp.Bracket = "Eliminated";
                     }
@@ -89,7 +90,7 @@ namespace TieRenTournament.Pages.Events
                 _context.SaveChanges();
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("./Index", new { elimination = elimination });
         }
     }
 }
