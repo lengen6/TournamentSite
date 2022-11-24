@@ -44,7 +44,30 @@ namespace TieRenTournament.Pages.Events
                 Byes = await _context.Competitor.Where(b => b.Bracket == "Bye").ToListAsync();
             }
 
-            if (Winners.Count > 1)
+            if (Eliminated.Count == Competitors.Count - 1)
+            {
+                Winners[0].Place = 1;
+                List<Competitor> orderedByWins = Eliminated.OrderByDescending(e => e.Wins).ToList();
+                for (int i = 0; i < orderedByWins.Count; i++)
+                {
+                    orderedByWins[i].Place = (i + 2);
+                }
+                AlignLocalStateToDB(Winners, Losers, Eliminated, Byes);
+                return RedirectToPage("./Results");
+            }
+
+            if (Winners.Count == 1 && Losers.Count == 1)
+            {
+                compRed = Winners[0];
+                compBlue = Losers[0];
+                compRed.IsRedComp = true;
+                compBlue.IsBlueComp = true;
+                match++;
+                AlignLocalStateToDB(Winners, Losers, Eliminated, Byes);
+                return RedirectToPage("./Match");
+            }
+
+            if (Winners != null)
             {
                 DetermineByes(Winners);
                 if (!IsBracketFinished(Winners))
@@ -52,14 +75,14 @@ namespace TieRenTournament.Pages.Events
                     if (ArrangeMatch(Winners))
                     {
                         match++;
-                        AlignLocalStateToDB(Winners, Losers, Eliminated);
+                        AlignLocalStateToDB(Winners, Losers, Eliminated,Byes);
                         return RedirectToPage("./Match");
                     }
                     
                 }
             }
 
-            if (Losers.Count > 1)
+            if (Losers != null)
             {
                 DetermineByes(Losers);
                 if (!IsBracketFinished(Losers))
@@ -67,28 +90,34 @@ namespace TieRenTournament.Pages.Events
                     if (ArrangeMatch(Losers))
                     {
                         match++;
-                        AlignLocalStateToDB(Winners, Losers, Eliminated);
+                        AlignLocalStateToDB(Winners, Losers, Eliminated, Byes);
                         return RedirectToPage("./Match");
                     }
 
                 }
             }
 
+            AlignLocalStateToDB(Winners, Losers, Eliminated, Byes);
+            if(_context.Competitor != null)
+            {
+                Byes = await _context.Competitor.Where(b => b.Bracket == "Bye").ToListAsync();
+            }
+
             if (Byes.Count > 1)
             {
-                    foreach(Competitor comp in Byes)
+                foreach (Competitor comp in Byes)
                 {
                     comp.Byes--;
                     comp.PreviousParticipant = false;
                 }
 
-                    if (ArrangeMatch(Byes))
-                    {
-                        match++;
-                        AlignLocalStateToDB(Winners, Losers, Eliminated);
-                        return RedirectToPage("./Match");
-                    } 
-            }
+                if (ArrangeMatch(Byes))
+                {
+                    match++;
+                    AlignLocalStateToDB(Winners, Losers, Eliminated, Byes);
+                    return RedirectToPage("./Match");
+                }
+            }          
 
             bool RoundOver = IsRoundOver();
 
@@ -96,20 +125,8 @@ namespace TieRenTournament.Pages.Events
             {
                 round++;
                 ResetParticipant();
-                AlignLocalStateToDB(Winners, Losers, Eliminated);
+                AlignLocalStateToDB(Winners, Losers, Eliminated, Byes);
                 return RedirectToPage("./Index");
-            }
-
-            if(Eliminated.Count == Competitors.Count - 1)
-            {
-                Winners[0].Place = 1;
-                Eliminated.Reverse();
-                for (int i = 0; i < Eliminated.Count; i++)
-                {
-                    Eliminated[i].Place = (i + 2);
-                }
-                AlignLocalStateToDB(Winners, Losers, Eliminated);
-                return RedirectToPage("./Results");
             }
             
             return Redirect("~/");
@@ -187,6 +204,7 @@ namespace TieRenTournament.Pages.Events
                     Random bracketPicker = new Random();
                     int currentPick = bracketPicker.Next(bracket.Count);
                     bracket[currentPick].Byes++;
+                    bracket[currentPick].Bracket = "Bye";
                     bracket[currentPick].PreviousParticipant = true;
                 }
 
@@ -224,6 +242,7 @@ namespace TieRenTournament.Pages.Events
             } else if (viableCompetitors[0] != null)
             {
                 viableCompetitors[0].Byes++;
+                viableCompetitors[0].Bracket = "Bye";
                 viableCompetitors[0].PreviousParticipant = true;
                 return false;
             }
@@ -231,10 +250,10 @@ namespace TieRenTournament.Pages.Events
             return true;
         }
 
-        public void AlignLocalStateToDB(List<Competitor> winnersToSave, List<Competitor> losersToSave, List<Competitor> eliminatedToSave)
+        public void AlignLocalStateToDB(List<Competitor> winnersToSave, List<Competitor> losersToSave, List<Competitor> eliminatedToSave, List<Competitor> byesToSave)
         {
 
-            if (winnersToSave.Count > 0)
+            if (winnersToSave.Count != null)
             {
                 foreach (var winner in winnersToSave)
                 {
@@ -243,7 +262,7 @@ namespace TieRenTournament.Pages.Events
                 }
             }
 
-            if (losersToSave.Count > 0)
+            if (losersToSave.Count != null)
             {
                 foreach (var loser in losersToSave)
                 {
@@ -252,12 +271,21 @@ namespace TieRenTournament.Pages.Events
                 }
             }
 
-            if (eliminatedToSave.Count > 0)
+            if (eliminatedToSave != null)
             {
                 foreach (var eliminated in eliminatedToSave)
                 {
                     eliminated.Bracket = "Eliminated";
                     _context.Competitor.Attach(eliminated);
+                }
+            }
+
+            if (byesToSave != null)
+            {
+                foreach (var bye in byesToSave)
+                {
+                    bye.Bracket = "Bye";
+                    _context.Competitor.Attach(bye);
                 }
             }
 
