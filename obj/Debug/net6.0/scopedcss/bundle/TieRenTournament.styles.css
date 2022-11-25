@@ -1,7 +1,7 @@
 /* _content/TieRenTournament/Pages/Events/Match.cshtml.rz.scp.css */
 .container[b-nt52lfo3o2] {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
     gap: 0px 0px;
     grid-auto-flow: row;
@@ -10,6 +10,7 @@
         "Red Red Blue Blue"
         "Plus-Red Minus-Red Plus-Blue Minus-Blue"
         "Sub-Red DQ-Red Sub-Blue DQ-Blue"
+        "Points-Red Points-Red Points-Blue Points-Blue"
         "Timer Timer Timer Timer";
 }
 
@@ -67,6 +68,13 @@
 
 .Timer[b-nt52lfo3o2] {
     grid-area: Timer;
+}
+.Points-Red[b-nt52lfo3o2] {
+    grid-area: Points-Red;
+}
+
+.Points-Blue[b-nt52lfo3o2] {
+    grid-area: Points-Blue;
 }
 /* _content/TieRenTournament/Pages/Shared/_Layout.cshtml.rz.scp.css */
 /* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification

@@ -25,6 +25,10 @@ namespace TieRenTournament.Pages.Events
         public Competitor? BlueComp { get; set; }
         [BindProperty]
         public bool RedWins { get; set; }
+        public int RedScore { get; set; }
+        public int BlueScore { get; set; }
+        [BindProperty]
+        public string VictoryMethod { get; set; }
         public void OnGet()
         {
             if (_context.Competitor != null)
@@ -52,10 +56,10 @@ namespace TieRenTournament.Pages.Events
             {
                 RedComp = _context.Competitor.Where(r => r.IsRedComp == true).FirstOrDefault();
                 BlueComp = _context.Competitor.Where(b => b.IsBlueComp == true).FirstOrDefault();
+                SetWinner(RedComp, BlueComp, elimination, match, round);
+                CreateMatch(RedComp, BlueComp, elimination, match, round);
+                _context.SaveChanges();
             }
-
-            SetWinner(RedComp, BlueComp, elimination, match, round);
-            CreateMatch(RedComp, BlueComp, elimination, match, round);
 
             return RedirectToPage("./Index", new {elimination = elimination, match = match, round = round});
         }
@@ -69,6 +73,7 @@ namespace TieRenTournament.Pages.Events
             currentMatch.MatchNumber = match;
             currentMatch.RoundNumber = round;
             currentMatch.Bracket = redComp.Bracket;
+            currentMatch.VictoryMethod = VictoryMethod;
 
             if (RedWins)
             {
@@ -80,7 +85,6 @@ namespace TieRenTournament.Pages.Events
             }
 
             _context.Match.Add(currentMatch);
-            _context.SaveChanges();
         }
         public void SetWinner(Competitor redComp, Competitor blueComp, int elimination, int match, int round)
         {
@@ -122,7 +126,6 @@ namespace TieRenTournament.Pages.Events
                 BlueComp.IsBlueComp = false;
                 _context.Competitor.Attach(RedComp);
                 _context.Competitor.Attach(BlueComp);
-                _context.SaveChanges();
             }
         }
     }

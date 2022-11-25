@@ -17,7 +17,7 @@ namespace TieRenTournament.Pages.Events
         public List<Match> Matches { get; set; }
         public void OnGet()
         {
-            Matches = _context.Match.ToList();
+            Matches = _context.Match.Include(r => r.CompeitorRed).Include(b => b.CompeitorBlue).ToList();
         }
     }
 }
