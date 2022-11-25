@@ -22,7 +22,7 @@ namespace TieRenTournament.Pages.Competitors
         }
 
         public IList<Competitor> Competitor { get;set; } = default!;
-
+        [BindProperty]
         public int Elimination { get; set; } = 2;
 
         public async Task OnGetAsync()
@@ -31,6 +31,11 @@ namespace TieRenTournament.Pages.Competitors
             {
                 Competitor = await _context.Competitor.ToListAsync();
             }
+        }
+
+        public async Task<IActionResult> OnPostAsync()
+        {
+            return RedirectToPage("/Events/Index", new {elimination = Elimination});
         }
     }
 }
