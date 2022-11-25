@@ -2,12 +2,26 @@
 @model TieRenTournament.Pages.Events.MatchModel
 @{
 }
+<link rel="stylesheet" href="~/@(nameof(TieRenTournament)).styles.css" />
 
-<h1>@Model.RedComp.Bracket's Bracket</h1>
-<h2>Round:@Model.Round Match:@Model.Match </h2>
+<h2>@Model.RedComp.Bracket's Bracket</h2>
+<h3>Round:@Model.Round Match:@Model.Match </h3>
 
-<h3>Red Competitor: @Model.RedComp.FirstName @Model.RedComp.LastMatch</h3>
-<h3>Blue Competitor: @Model.BlueComp.FirstName @Model.BlueComp.LastMatch</h3>
+<div class="container">
+    <div class="Minutes">Minutes</div>
+    <div class="Seconds">Seconds</div>
+    <div class="Red">@Model.RedComp.FirstName @Model.RedComp.LastName</div>
+    <div class="Blue">@Model.BlueComp.FirstName @Model.BlueComp.LastName</div>
+    <div class="Plus-Blue">+</div>
+    <div class="Minus-Blue">-</div>
+    <div class="Sub-Red">Submission</div>
+    <div class="Plus-Red">+</div>
+    <div class="Minus-Red">-</div>
+    <div class="DQ-Red">Disqualification</div>
+    <div class="Sub-Blue">Submission</div>
+    <div class="DQ-Blue">Disqualification</div>
+    <div class="Timer">00:00</div>
+</div>
 
 <form method="post">
     <input type="radio" asp-for="RedWins" value="true"/> Red Wins <br />

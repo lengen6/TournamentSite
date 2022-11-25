@@ -1,3 +1,73 @@
+/* _content/TieRenTournament/Pages/Events/Match.cshtml.rz.scp.css */
+.container[b-nt52lfo3o2] {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+        "Minutes Minutes Seconds Seconds"
+        "Red Red Blue Blue"
+        "Plus-Red Minus-Red Plus-Blue Minus-Blue"
+        "Sub-Red DQ-Red Sub-Blue DQ-Blue"
+        "Timer Timer Timer Timer";
+}
+
+.Minutes[b-nt52lfo3o2] {
+    grid-area: Minutes;
+}
+
+.Seconds[b-nt52lfo3o2] {
+    grid-area: Seconds;
+}
+
+.Red[b-nt52lfo3o2] {
+    grid-area: Red;
+    background-color: red;
+    color: white;
+}
+
+.Blue[b-nt52lfo3o2] {
+    grid-area: Blue;
+    background-color: blue;
+    color: white;
+}
+
+.Plus-Blue[b-nt52lfo3o2] {
+    grid-area: Plus-Blue;
+}
+
+.Minus-Blue[b-nt52lfo3o2] {
+    grid-area: Minus-Blue;
+}
+
+.Sub-Red[b-nt52lfo3o2] {
+    grid-area: Sub-Red;
+}
+
+.Plus-Red[b-nt52lfo3o2] {
+    grid-area: Plus-Red;
+}
+
+.Minus-Red[b-nt52lfo3o2] {
+    grid-area: Minus-Red;
+}
+
+.DQ-Red[b-nt52lfo3o2] {
+    grid-area: DQ-Red;
+}
+
+.Sub-Blue[b-nt52lfo3o2] {
+    grid-area: Sub-Blue;
+}
+
+.DQ-Blue[b-nt52lfo3o2] {
+    grid-area: DQ-Blue;
+}
+
+.Timer[b-nt52lfo3o2] {
+    grid-area: Timer;
+}
 /* _content/TieRenTournament/Pages/Shared/_Layout.cshtml.rz.scp.css */
 /* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */

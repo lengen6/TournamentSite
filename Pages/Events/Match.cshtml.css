@@ -1,0 +1,69 @@
+﻿.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+        "Minutes Minutes Seconds Seconds"
+        "Red Red Blue Blue"
+        "Plus-Red Minus-Red Plus-Blue Minus-Blue"
+        "Sub-Red DQ-Red Sub-Blue DQ-Blue"
+        "Timer Timer Timer Timer";
+}
+
+.Minutes {
+    grid-area: Minutes;
+}
+
+.Seconds {
+    grid-area: Seconds;
+}
+
+.Red {
+    grid-area: Red;
+    background-color: red;
+    color: white;
+}
+
+.Blue {
+    grid-area: Blue;
+    background-color: blue;
+    color: white;
+}
+
+.Plus-Blue {
+    grid-area: Plus-Blue;
+}
+
+.Minus-Blue {
+    grid-area: Minus-Blue;
+}
+
+.Sub-Red {
+    grid-area: Sub-Red;
+}
+
+.Plus-Red {
+    grid-area: Plus-Red;
+}
+
+.Minus-Red {
+    grid-area: Minus-Red;
+}
+
+.DQ-Red {
+    grid-area: DQ-Red;
+}
+
+.Sub-Blue {
+    grid-area: Sub-Blue;
+}
+
+.DQ-Blue {
+    grid-area: DQ-Blue;
+}
+
+.Timer {
+    grid-area: Timer;
+}

@@ -54,7 +54,37 @@ namespace TieRenTournament.Pages.Events
                 BlueComp = _context.Competitor.Where(b => b.IsBlueComp == true).FirstOrDefault();
             }
 
-                if (RedComp != null && BlueComp != null)
+            SetWinner(RedComp, BlueComp, elimination, match, round);
+            CreateMatch(RedComp, BlueComp, elimination, match, round);
+
+            return RedirectToPage("./Index", new {elimination = elimination, match = match, round = round});
+        }
+
+        //Class Methods
+        public void CreateMatch(Competitor redComp, Competitor blueComp, int elimination, int match, int round)
+        {
+            Match currentMatch = new Match();
+            currentMatch.CompeitorRed = redComp;
+            currentMatch.CompeitorBlue = blueComp;
+            currentMatch.MatchNumber = match;
+            currentMatch.RoundNumber = round;
+            currentMatch.Bracket = redComp.Bracket;
+
+            if (RedWins)
+            {
+                currentMatch.Winner = redComp;
+            }
+            else
+            {
+                currentMatch.Winner = blueComp;
+            }
+
+            _context.Match.Add(currentMatch);
+            _context.SaveChanges();
+        }
+        public void SetWinner(Competitor redComp, Competitor blueComp, int elimination, int match, int round)
+        {
+            if (RedComp != null && BlueComp != null)
             {
                 if (RedWins)
                 {
@@ -71,7 +101,8 @@ namespace TieRenTournament.Pages.Events
                     {
                         BlueComp.Bracket = "Loser";
                     }
-                } else if (!RedWins)
+                }
+                else if (!RedWins)
                 {
                     BlueComp.Wins++;
                     RedComp.Losses++;
@@ -93,8 +124,6 @@ namespace TieRenTournament.Pages.Events
                 _context.Competitor.Attach(BlueComp);
                 _context.SaveChanges();
             }
-
-            return RedirectToPage("./Index", new {elimination = elimination, match = match, round = round});
         }
     }
 }

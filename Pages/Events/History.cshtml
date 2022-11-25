@@ -1,0 +1,88 @@
+﻿@page
+@model TieRenTournament.Pages.Events.HistoryModel
+@{
+
+}
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Matches[0].RoundNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Matches[0].MatchNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Matches[0].CompeitorRed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Matches[0].CompeitorBlue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Matches[0].CompetitorRedScore)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Matches[0].CompetitorBlueScore)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Matches[0].Winner)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Matches[0].VictoryMethod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Matches[0].StartingLength)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Matches[0].Duration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Matches[0].Bracket)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Matches)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RoundNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MatchNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CompeitorRed.FirstName) @Html.DisplayFor(modelItem => item.CompeitorRed.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CompeitorBlue.FirstName) @Html.DisplayFor(modelItem => item.CompeitorBlue.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CompetitorRedScore)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CompetitorBlueScore)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Winner.FirstName) @Html.DisplayFor(modelItem => item.Winner.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VictoryMethod)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartingLength)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Duration)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Bracket)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-page="./Results">Back to Player Results</a>

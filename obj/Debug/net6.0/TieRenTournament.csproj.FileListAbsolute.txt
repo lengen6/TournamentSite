@@ -271,3 +271,4 @@ C:\Users\Michael\OneDrive - Lorain County Community College\Docs\College Folders
 C:\Users\Michael\OneDrive - Lorain County Community College\Docs\College Folders\Fall 2022\CISS 243\TieRenTournament\obj\Debug\net6.0\TieRenTournament.pdb
 C:\Users\Michael\OneDrive - Lorain County Community College\Docs\College Folders\Fall 2022\CISS 243\TieRenTournament\obj\Debug\net6.0\TieRenTournament.genruntimeconfig.cache
 C:\Users\Michael\OneDrive - Lorain County Community College\Docs\College Folders\Fall 2022\CISS 243\TieRenTournament\obj\Debug\net6.0\ref\TieRenTournament.dll
+C:\Users\Michael\OneDrive - Lorain County Community College\Docs\College Folders\Fall 2022\CISS 243\TieRenTournament\obj\Debug\net6.0\scopedcss\Pages\Events\Match.cshtml.rz.scp.css

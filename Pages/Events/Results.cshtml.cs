@@ -17,10 +17,12 @@ namespace TieRenTournament.Pages.Events
         }
 
         public List<Competitor> Results { get; set; }
+        public List<Match> Matches { get; set; }
         public void OnGetAsync()
         {
             
             Results = _context.Competitor.OrderBy(c => c.Place).ToList();
+
             
         }
 
@@ -28,7 +30,12 @@ namespace TieRenTournament.Pages.Events
         {
             
             Results = await _context.Competitor.ToListAsync();
-            
+            Matches = await _context.Match.ToListAsync();
+
+            foreach(Match match in Matches)
+            {
+                _context.Match.Remove(match);
+            }
 
             foreach (var competitor in Results)
             {
