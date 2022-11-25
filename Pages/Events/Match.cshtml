@@ -3,6 +3,7 @@
 @{
 }
 <link rel="stylesheet" href="~/@(nameof(TieRenTournament)).styles.css" />
+<script src="~/@(nameof(TieRenTournament)).site.js"></script>
 
 <h2>@Model.RedComp.Bracket's Bracket</h2>
 <h3>Round:@Model.Round Match:@Model.Match </h3>
@@ -12,8 +13,8 @@
     <div class="Seconds">Seconds</div>
     <div class="Red">@Model.RedComp.FirstName @Model.RedComp.LastName</div>
     <div class="Blue">@Model.BlueComp.FirstName @Model.BlueComp.LastName</div>
-    <div class="Plus-Blue">+</div>
-    <div class="Minus-Blue">-</div>
+    <button class="Plus-Blue">+</button>
+    <button class="Minus-Blue">-</button>
     <div class="Sub-Red">
         <form method="post">
             <input asp-for="RedWins" value="true" type="hidden"/>
@@ -21,8 +22,8 @@
             <input type="submit" value="Submission" asp-page-handler="Match" asp-route-elimination="@Model.Elimination" asp-route-match="@Model.Match" asp-route-round="@Model.Round" />
         </form>
     </div>
-    <div class="Plus-Red">+</div>
-    <div class="Minus-Red">-</div>
+    <button class="Plus-Red">+</button>
+    <button class="Minus-Red">-</button>
     <div class="DQ-Red">
         <form method="post">
             <input asp-for="RedWins" value="false" type="hidden" />
@@ -48,3 +49,5 @@
     <div class="Points-Blue">0</div>
     <div class="Timer">00:00</div>
 </div>
+
+<asp:HiddenField runat="server" ID="RedScore" Value="" />

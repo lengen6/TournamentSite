@@ -8,81 +8,81 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = TieRenTournament
 build_property.RootNamespace = TieRenTournament
-build_property.ProjectDir = C:\Users\Michael\OneDrive - Lorain County Community College\Docs\College Folders\Fall 2022\CISS 243\TieRenTournament\
+build_property.ProjectDir = C:\Users\Michael\OneDrive - Lorain County Community College\Docs\College Folders\Fall 2022\CISS 243\TournamentSite\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Michael\OneDrive - Lorain County Community College\Docs\College Folders\Fall 2022\CISS 243\TieRenTournament
+build_property.MSBuildProjectDirectory = C:\Users\Michael\OneDrive - Lorain County Community College\Docs\College Folders\Fall 2022\CISS 243\TournamentSite
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Michael/OneDrive - Lorain County Community College/Docs/College Folders/Fall 2022/CISS 243/TieRenTournament/Areas/Identity/Pages/_ViewStart.cshtml]
+[C:/Users/Michael/OneDrive - Lorain County Community College/Docs/College Folders/Fall 2022/CISS 243/TournamentSite/Areas/Identity/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Michael/OneDrive - Lorain County Community College/Docs/College Folders/Fall 2022/CISS 243/TieRenTournament/Pages/Competitors/Create.cshtml]
+[C:/Users/Michael/OneDrive - Lorain County Community College/Docs/College Folders/Fall 2022/CISS 243/TournamentSite/Pages/Competitors/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29tcGV0aXRvcnNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Michael/OneDrive - Lorain County Community College/Docs/College Folders/Fall 2022/CISS 243/TieRenTournament/Pages/Competitors/Delete.cshtml]
+[C:/Users/Michael/OneDrive - Lorain County Community College/Docs/College Folders/Fall 2022/CISS 243/TournamentSite/Pages/Competitors/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29tcGV0aXRvcnNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Michael/OneDrive - Lorain County Community College/Docs/College Folders/Fall 2022/CISS 243/TieRenTournament/Pages/Competitors/Details.cshtml]
+[C:/Users/Michael/OneDrive - Lorain County Community College/Docs/College Folders/Fall 2022/CISS 243/TournamentSite/Pages/Competitors/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29tcGV0aXRvcnNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Michael/OneDrive - Lorain County Community College/Docs/College Folders/Fall 2022/CISS 243/TieRenTournament/Pages/Competitors/Edit.cshtml]
+[C:/Users/Michael/OneDrive - Lorain County Community College/Docs/College Folders/Fall 2022/CISS 243/TournamentSite/Pages/Competitors/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29tcGV0aXRvcnNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Michael/OneDrive - Lorain County Community College/Docs/College Folders/Fall 2022/CISS 243/TieRenTournament/Pages/Competitors/Index.cshtml]
+[C:/Users/Michael/OneDrive - Lorain County Community College/Docs/College Folders/Fall 2022/CISS 243/TournamentSite/Pages/Competitors/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29tcGV0aXRvcnNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Michael/OneDrive - Lorain County Community College/Docs/College Folders/Fall 2022/CISS 243/TieRenTournament/Pages/Error.cshtml]
+[C:/Users/Michael/OneDrive - Lorain County Community College/Docs/College Folders/Fall 2022/CISS 243/TournamentSite/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Michael/OneDrive - Lorain County Community College/Docs/College Folders/Fall 2022/CISS 243/TieRenTournament/Pages/Events/History.cshtml]
+[C:/Users/Michael/OneDrive - Lorain County Community College/Docs/College Folders/Fall 2022/CISS 243/TournamentSite/Pages/Events/History.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRzXEhpc3RvcnkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Michael/OneDrive - Lorain County Community College/Docs/College Folders/Fall 2022/CISS 243/TieRenTournament/Pages/Events/Index.cshtml]
+[C:/Users/Michael/OneDrive - Lorain County Community College/Docs/College Folders/Fall 2022/CISS 243/TournamentSite/Pages/Events/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Michael/OneDrive - Lorain County Community College/Docs/College Folders/Fall 2022/CISS 243/TieRenTournament/Pages/Events/Results.cshtml]
+[C:/Users/Michael/OneDrive - Lorain County Community College/Docs/College Folders/Fall 2022/CISS 243/TournamentSite/Pages/Events/Results.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRzXFJlc3VsdHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Michael/OneDrive - Lorain County Community College/Docs/College Folders/Fall 2022/CISS 243/TieRenTournament/Pages/Index.cshtml]
+[C:/Users/Michael/OneDrive - Lorain County Community College/Docs/College Folders/Fall 2022/CISS 243/TournamentSite/Pages/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Michael/OneDrive - Lorain County Community College/Docs/College Folders/Fall 2022/CISS 243/TieRenTournament/Pages/Privacy.cshtml]
+[C:/Users/Michael/OneDrive - Lorain County Community College/Docs/College Folders/Fall 2022/CISS 243/TournamentSite/Pages/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Michael/OneDrive - Lorain County Community College/Docs/College Folders/Fall 2022/CISS 243/TieRenTournament/Pages/Shared/_LoginPartial.cshtml]
+[C:/Users/Michael/OneDrive - Lorain County Community College/Docs/College Folders/Fall 2022/CISS 243/TournamentSite/Pages/Shared/_LoginPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Michael/OneDrive - Lorain County Community College/Docs/College Folders/Fall 2022/CISS 243/TieRenTournament/Pages/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/Michael/OneDrive - Lorain County Community College/Docs/College Folders/Fall 2022/CISS 243/TournamentSite/Pages/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Michael/OneDrive - Lorain County Community College/Docs/College Folders/Fall 2022/CISS 243/TieRenTournament/Pages/_ViewImports.cshtml]
+[C:/Users/Michael/OneDrive - Lorain County Community College/Docs/College Folders/Fall 2022/CISS 243/TournamentSite/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Michael/OneDrive - Lorain County Community College/Docs/College Folders/Fall 2022/CISS 243/TieRenTournament/Pages/_ViewStart.cshtml]
+[C:/Users/Michael/OneDrive - Lorain County Community College/Docs/College Folders/Fall 2022/CISS 243/TournamentSite/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Michael/OneDrive - Lorain County Community College/Docs/College Folders/Fall 2022/CISS 243/TieRenTournament/Pages/Events/Match.cshtml]
+[C:/Users/Michael/OneDrive - Lorain County Community College/Docs/College Folders/Fall 2022/CISS 243/TournamentSite/Pages/Events/Match.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRzXE1hdGNoLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = b-nt52lfo3o2
 
-[C:/Users/Michael/OneDrive - Lorain County Community College/Docs/College Folders/Fall 2022/CISS 243/TieRenTournament/Pages/Shared/_Layout.cshtml]
+[C:/Users/Michael/OneDrive - Lorain County Community College/Docs/College Folders/Fall 2022/CISS 243/TournamentSite/Pages/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-t4d0fwcol8

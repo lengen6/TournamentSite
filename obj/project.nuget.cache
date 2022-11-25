@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9Q3G2Zx8t1nK6yRX6VfHNJ7eAXgH4rNy+Zf0Q5pfWr/f5kHB3FCEhEEMn5uZkBSX3ijYLk1y9b3aLbPOb9XOPQ==",
+  "dgSpecHash": "XOnyVdxip6i+7WVa6M8hP3H7Pd6QcGB+bqVIFSXb5v1OvZ9jg19/FJ8MWg5SLq8adEf1K9uWm0UhbNTTgAdCbQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Michael\\OneDrive - Lorain County Community College\\Docs\\College Folders\\Fall 2022\\CISS 243\\TieRenTournament\\TieRenTournament.csproj",
+  "projectFilePath": "C:\\Users\\Michael\\OneDrive - Lorain County Community College\\Docs\\College Folders\\Fall 2022\\CISS 243\\TournamentSite\\TieRenTournament.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Michael\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Michael\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",

@@ -10297,11 +10297,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Michael\\OneDrive - Lorain County Community College\\Docs\\College Folders\\Fall 2022\\CISS 243\\TieRenTournament\\TieRenTournament.csproj",
+      "projectUniqueName": "C:\\Users\\Michael\\OneDrive - Lorain County Community College\\Docs\\College Folders\\Fall 2022\\CISS 243\\TournamentSite\\TieRenTournament.csproj",
       "projectName": "TieRenTournament",
-      "projectPath": "C:\\Users\\Michael\\OneDrive - Lorain County Community College\\Docs\\College Folders\\Fall 2022\\CISS 243\\TieRenTournament\\TieRenTournament.csproj",
+      "projectPath": "C:\\Users\\Michael\\OneDrive - Lorain County Community College\\Docs\\College Folders\\Fall 2022\\CISS 243\\TournamentSite\\TieRenTournament.csproj",
       "packagesPath": "C:\\Users\\Michael\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Michael\\OneDrive - Lorain County Community College\\Docs\\College Folders\\Fall 2022\\CISS 243\\TieRenTournament\\obj\\",
+      "outputPath": "C:\\Users\\Michael\\OneDrive - Lorain County Community College\\Docs\\College Folders\\Fall 2022\\CISS 243\\TournamentSite\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Michael\\AppData\\Roaming\\NuGet\\NuGet.Config",
