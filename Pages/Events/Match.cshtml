@@ -2,8 +2,10 @@
 @model TieRenTournament.Pages.Events.MatchModel
 @{
 }
+@Html.AntiForgeryToken()
+
 <link rel="stylesheet" href="~/@(nameof(TieRenTournament)).styles.css" />
-<script src="~/@(nameof(TieRenTournament)).site.js"></script>
+
 
 <h2>@Model.RedComp.Bracket's Bracket</h2>
 <h3>Round:@Model.Round Match:@Model.Match </h3>
@@ -19,7 +21,7 @@
         <form method="post">
             <input asp-for="RedWins" value="true" type="hidden"/>
             <input asp-for="VictoryMethod" value ="Submission" type="hidden"/>
-            <input type="submit" value="Submission" asp-page-handler="Match" asp-route-elimination="@Model.Elimination" asp-route-match="@Model.Match" asp-route-round="@Model.Round" />
+            <input type="submit" value="Submission" asp-page-handler="Match" asp-route-elimination="@Model.Elimination" asp-route-match="@Model.Match" asp-route-round="@Model.Round" class="send" />
         </form>
     </div>
     <button class="Plus-Red">+</button>
@@ -28,26 +30,26 @@
         <form method="post">
             <input asp-for="RedWins" value="false" type="hidden" />
             <input asp-for="VictoryMethod" value="Opponent Disqualification" type="hidden" />
-            <input type="submit" value="Disqualification" asp-page-handler="Match" asp-route-elimination="@Model.Elimination" asp-route-match="@Model.Match" asp-route-round="@Model.Round" />
+            <input type="submit" value="Disqualification" asp-page-handler="Match" asp-route-elimination="@Model.Elimination" asp-route-match="@Model.Match" asp-route-round="@Model.Round" class="send" />
         </form>
     </div>
     <div class="Sub-Blue">
         <form method="post">
             <input type="hidden" asp-for="RedWins" value="false"/>
             <input type="hidden" asp-for="VictoryMethod" value="Submission" />
-            <input type="submit" value="Submission" asp-page-handler="Match" asp-route-elimination="@Model.Elimination" asp-route-match="@Model.Match" asp-route-round="@Model.Round" />
+            <input type="submit" value="Submission" asp-page-handler="Match" asp-route-elimination="@Model.Elimination" asp-route-match="@Model.Match" asp-route-round="@Model.Round" class="send" />
         </form>
     </div>
     <div class="DQ-Blue">
         <form method="post">
             <input asp-for="RedWins" value="true" type="hidden" />
             <input asp-for="VictoryMethod" value="Opponent Disqualification" type="hidden" />
-            <input type="submit" value="Disqualification" asp-page-handler="Match" asp-route-elimination="@Model.Elimination" asp-route-match="@Model.Match" asp-route-round="@Model.Round" />
+            <input type="submit" value="Disqualification" asp-page-handler="Match" asp-route-elimination="@Model.Elimination" asp-route-match="@Model.Match" asp-route-round="@Model.Round" class="send" />
         </form>
     </div>
-    <div class="Points-Red">0</div>
+    <div class="Points-Red" id="inputId">0</div>
     <div class="Points-Blue">0</div>
     <div class="Timer">00:00</div>
 </div>
 
-<asp:HiddenField runat="server" ID="RedScore" Value="" />
+<input asp-for="RedScore" type="hidden" id="scoreRed" value=""/>

@@ -29,6 +29,9 @@ namespace TieRenTournament.Pages.Events
         public int BlueScore { get; set; }
         [BindProperty]
         public string VictoryMethod { get; set; }
+        public int RandomNumber { get; set; }
+
+
         public void OnGet()
         {
             if (_context.Competitor != null)
