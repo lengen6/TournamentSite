@@ -80,6 +80,7 @@ namespace TieRenTournament.Pages.Events
             currentMatch.Bracket = redComp.Bracket;
             currentMatch.VictoryMethod = VictoryMethod;
             currentMatch.CompetitorRedScore = RedScore;
+            currentMatch.CompetitorBlueScore = BlueScore;
 
             if (RedWins)
             {
