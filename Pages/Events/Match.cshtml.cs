@@ -25,7 +25,9 @@ namespace TieRenTournament.Pages.Events
         public Competitor? BlueComp { get; set; }
         [BindProperty]
         public bool RedWins { get; set; }
+        [BindProperty]
         public int RedScore { get; set; }
+        [BindProperty]
         public int BlueScore { get; set; }
         [BindProperty]
         public string VictoryMethod { get; set; }
@@ -77,6 +79,7 @@ namespace TieRenTournament.Pages.Events
             currentMatch.RoundNumber = round;
             currentMatch.Bracket = redComp.Bracket;
             currentMatch.VictoryMethod = VictoryMethod;
+            currentMatch.CompetitorRedScore = RedScore;
 
             if (RedWins)
             {

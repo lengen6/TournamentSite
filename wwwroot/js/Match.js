@@ -12,11 +12,10 @@ let redScore = 0;
 redScoreIncrease.addEventListener('click', () => {
     redScore++;
     redScoreDisplay.textContent = redScore.toString();
-    document.getElementById("scoreRed").value = "My value";
+    document.getElementById("scoreRedOne").value = redScore;
+    document.getElementById("scoreRedTwo").value = redScore;
+    document.getElementById("scoreRedThree").value = redScore;
+    document.getElementById("scoreRedFour").value = redScore;
 })
 
-let obj = {
-    RedScore: redScore,
-    BlueScore: blueScore
-};
 
