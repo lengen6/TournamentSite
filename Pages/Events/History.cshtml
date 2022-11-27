@@ -36,10 +36,10 @@
                 @Html.DisplayNameFor(model => model.Matches[0].StartingLength)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Matches[0].Duration)
+                @Html.DisplayNameFor(model => model.Matches[0].MatchEnd)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Matches[0].Bracket)
+                @Html.DisplayNameFor(model => model.Matches[0].Duration)
             </th>
         </tr>
     </thead>
@@ -75,10 +75,10 @@
                     @Html.DisplayFor(modelItem => item.StartingLength)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Duration)
+                    @Html.DisplayFor(modelItem => item.MatchEnd)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Bracket)
+                    @Html.DisplayFor(modelItem => item.Duration)
                 </td>
             </tr>
         }

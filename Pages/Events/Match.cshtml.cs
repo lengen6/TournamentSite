@@ -31,7 +31,14 @@ namespace TieRenTournament.Pages.Events
         public int BlueScore { get; set; }
         [BindProperty]
         public string VictoryMethod { get; set; }
-        public int RandomNumber { get; set; }
+        [BindProperty]
+        public int StartMinutes { get; set; }
+        [BindProperty]
+        public int StartSeconds { get; set; }
+        [BindProperty]
+        public int EndMinutes { get; set; }
+        [BindProperty]
+        public int EndSeconds { get; set; }
 
 
         public void OnGet()
@@ -72,6 +79,10 @@ namespace TieRenTournament.Pages.Events
         //Class Methods
         public void CreateMatch(Competitor redComp, Competitor blueComp, int elimination, int match, int round)
         {
+            string startTime = StartMinutes.ToString() + " : " + StartSeconds.ToString();
+            string endTime = EndMinutes.ToString() + " : " + EndSeconds.ToString();
+            string duration = (StartMinutes - EndMinutes).ToString() + " : " + (StartSeconds - EndSeconds).ToString();
+
             Match currentMatch = new Match();
             currentMatch.CompeitorRed = redComp;
             currentMatch.CompeitorBlue = blueComp;
@@ -81,6 +92,9 @@ namespace TieRenTournament.Pages.Events
             currentMatch.VictoryMethod = VictoryMethod;
             currentMatch.CompetitorRedScore = RedScore;
             currentMatch.CompetitorBlueScore = BlueScore;
+            currentMatch.StartingLength = startTime;
+            currentMatch.MatchEnd = endTime;
+            currentMatch.Duration = duration;
 
             if (RedWins)
             {

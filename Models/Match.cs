@@ -11,9 +11,11 @@ namespace TieRenTournament.Models
         public int CompetitorRedScore { get; set; } = 0;
         [Display(Name = "Blue Score")]
         public int CompetitorBlueScore { get; set; } = 0;
+        [Display(Name = "Match End")]
+        public string MatchEnd { get; set; } = "0";
         [Display(Name = "Starting Length")]
-        public int StartingLength { get; set; } = 0;
-        public int Duration { get; set; } = 0;
+        public string StartingLength { get; set; } = "0";
+        public string Duration { get; set; } = "0";
         [Display(Name = "Round #")]
         public int RoundNumber { get; set; } = 0;
         [Display(Name = "Match #")]

@@ -5,9 +5,16 @@ const blueScoreIncrease = document.querySelector(".Plus-Blue");
 const blueScoreDecrease = document.querySelector(".Minus-Blue");
 const redScoreDisplay = document.querySelector(".Points-Red");
 const blueScoreDisplay = document.querySelector(".Points-Blue");
-const sendButtons = document.querySelectorAll(".send");
+const start = document.getElementById('start');
+const reset = document.getElementById('reset');
+const minute = document.getElementById("minute");
+const second = document.getElementById("second");
+const pause = document.getElementById("pause");
+const play = document.getElementById("play");
+const sendButtons = document.querySelectorAll("send");
 let blueScore = 0;
 let redScore = 0;
+let isPaused = false;
 
 //No idea why I can't select based of a class name but it doesn't work unless selected by ID
 
@@ -75,16 +82,6 @@ blueScoreDecrease.addEventListener('click', () => {
     document.getElementById("scoreBlueEight").value = blueScore;
 })
 
-
-const start = document.getElementById('start');
-const reset = document.getElementById('reset');
-const minute = document.getElementById("minute");
-const second = document.getElementById("second");
-const pause = document.getElementById("pause");
-const play = document.getElementById("play");
-let isPaused = false;
-
-
 start.addEventListener('click', function startFunction () {
    
     function startInterval() {
@@ -99,6 +96,26 @@ start.addEventListener('click', function startFunction () {
             }
 
         }, 1000);
+
+        //Start Minutes
+        document.getElementById("startMinutesOne").value = minute.value;
+        document.getElementById("startMinutesTwo").value = minute.value;
+        document.getElementById("startMinutesThree").value = minute.value;
+        document.getElementById("startMinutesFour").value = minute.value;
+        document.getElementById("startMinutesFive").value = minute.value;
+        document.getElementById("startMinutesSix").value = minute.value;
+        document.getElementById("startMinutesSeven").value = minute.value;
+        document.getElementById("startMinutesEight").value = minute.value;
+
+        //Start Seconds
+        document.getElementById("startSecondsOne").value = second.value;
+        document.getElementById("startSecondsTwo").value = second.value;
+        document.getElementById("startSecondsThree").value = second.value;
+        document.getElementById("startSecondsFour").value = second.value;
+        document.getElementById("startSecondsFive").value = second.value;
+        document.getElementById("startSecondsSix").value = second.value;
+        document.getElementById("startSecondsSeven").value = second.value;
+        document.getElementById("startSecondsEight").value = second.value;
     }   
     startInterval();
     start.setAttribute('disabled', '');
@@ -123,6 +140,28 @@ function timer() {
         second.value = 59;
         minute.value--;
     }
+
+
+    //End Minutes
+    document.getElementById("endMinutesOne").value = minute.value;
+    document.getElementById("endMinutesTwo").value = minute.value;
+    document.getElementById("endMinutesThree").value = minute.value;
+    document.getElementById("endMinutesFour").value = minute.value;
+    document.getElementById("endMinutesFive").value = minute.value;
+    document.getElementById("endMinutesSix").value = minute.value;
+    document.getElementById("endMinutesSeven").value = minute.value;
+    document.getElementById("endMinutesEight").value = minute.value;
+
+    //End Seconds            
+    document.getElementById("endSecondsOne").value = second.value;
+    document.getElementById("endSecondsTwo").value = second.value;
+    document.getElementById("endSecondsThree").value = second.value;
+    document.getElementById("endSecondsFour").value = second.value;
+    document.getElementById("endSecondsFive").value = second.value;
+    document.getElementById("endSecondsSix").value = second.value;
+    document.getElementById("endSecondsSeven").value = second.value;
+    document.getElementById("endSecondsEight").value = second.value;
+
     return;
 }
 
