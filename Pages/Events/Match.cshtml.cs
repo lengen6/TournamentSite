@@ -79,32 +79,10 @@ namespace TieRenTournament.Pages.Events
         //Class Methods
         public void CreateMatch(Competitor redComp, Competitor blueComp, int elimination, int match, int round)
         {
-            string appendedZeroStart = "";
-            string appendedZeroEnd = "";
-            string startMinutesAppendZero = "";
-            string endMinutesAppendZero = "";
+            string appendedZeroStart, appendedZeroEnd, startMinutesAppendZero, endMinutesAppendZero, lessThanTenAppendZero;
+            AppendZeros(out appendedZeroStart, out appendedZeroEnd, out startMinutesAppendZero, out endMinutesAppendZero, out lessThanTenAppendZero);
 
-            if (StartSeconds == 0)
-            {
-                appendedZeroStart = "0";
-            }
-
-            if(EndSeconds == 0)
-            {
-                appendedZeroEnd = "0"; 
-            }
-
-            if(StartMinutes < 10)
-            {
-                startMinutesAppendZero = "0";
-            }
-
-            if(EndMinutes < 10)
-            {
-                endMinutesAppendZero = "0";
-            }
-
-            string startTime = startMinutesAppendZero + StartMinutes.ToString() + ":" + StartSeconds.ToString() + appendedZeroStart;
+            string startTime = startMinutesAppendZero + StartMinutes.ToString() + ":" + lessThanTenAppendZero + StartSeconds.ToString() + appendedZeroStart;
             string endTime = endMinutesAppendZero + EndMinutes.ToString() + ":" + EndSeconds.ToString() + appendedZeroEnd;
             string duration = timeGap(startTime, endTime);
 
@@ -132,6 +110,39 @@ namespace TieRenTournament.Pages.Events
 
             _context.Match.Add(currentMatch);
         }
+
+        private void AppendZeros(out string appendedZeroStart, out string appendedZeroEnd, out string startMinutesAppendZero, out string endMinutesAppendZero, out string lessThanTenAppendZero)
+        {
+            appendedZeroStart = "";
+            appendedZeroEnd = "";
+            startMinutesAppendZero = "";
+            endMinutesAppendZero = "";
+            lessThanTenAppendZero = "";
+            if (StartSeconds == 0)
+            {
+                appendedZeroStart = "0";
+            }
+
+            if (EndSeconds == 0)
+            {
+                appendedZeroEnd = "0";
+            }
+
+            if (StartMinutes < 10)
+            {
+                startMinutesAppendZero = "0";
+            }
+
+            if (EndMinutes < 10)
+            {
+                endMinutesAppendZero = "0";
+            }
+            if (StartSeconds < 10 && StartSeconds > 0)
+            {
+                lessThanTenAppendZero = "0";
+            }
+        }
+
         public void SetWinner(Competitor redComp, Competitor blueComp, int elimination, int match, int round)
         {
             if (RedComp != null && BlueComp != null)

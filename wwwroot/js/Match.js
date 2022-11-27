@@ -95,6 +95,9 @@ start.addEventListener('click', function startFunction () {
                 isPaused = false;
             }
 
+            leadingZeros(minute);
+            leadingZeros(second);
+
         }, 1000);
 
         //Start Minutes
@@ -141,7 +144,6 @@ function timer() {
         minute.value--;
     }
 
-
     //End Minutes
     document.getElementById("endMinutesOne").value = minute.value;
     document.getElementById("endMinutesTwo").value = minute.value;
@@ -176,6 +178,12 @@ pause.addEventListener('click', function(){
 play.addEventListener('click', function () {
     isPaused = false;
 })
+
+function leadingZeros(input) {
+    if (!isNaN(input.value) && input.value.length === 1) {
+        input.value = '0' + input.value;
+    }
+}
 
 
 
