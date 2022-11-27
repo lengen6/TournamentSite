@@ -79,9 +79,34 @@ namespace TieRenTournament.Pages.Events
         //Class Methods
         public void CreateMatch(Competitor redComp, Competitor blueComp, int elimination, int match, int round)
         {
-            string startTime = StartMinutes.ToString() + " : " + StartSeconds.ToString();
-            string endTime = EndMinutes.ToString() + " : " + EndSeconds.ToString();
-            string duration = (StartMinutes - EndMinutes).ToString() + " : " + (StartSeconds - EndSeconds).ToString();
+            string appendedZeroStart = "";
+            string appendedZeroEnd = "";
+            string startMinutesAppendZero = "";
+            string endMinutesAppendZero = "";
+
+            if (StartSeconds == 0)
+            {
+                appendedZeroStart = "0";
+            }
+
+            if(EndSeconds == 0)
+            {
+                appendedZeroEnd = "0"; 
+            }
+
+            if(StartMinutes < 10)
+            {
+                startMinutesAppendZero = "0";
+            }
+
+            if(EndMinutes < 10)
+            {
+                endMinutesAppendZero = "0";
+            }
+
+            string startTime = startMinutesAppendZero + StartMinutes.ToString() + ":" + StartSeconds.ToString() + appendedZeroStart;
+            string endTime = endMinutesAppendZero + EndMinutes.ToString() + ":" + EndSeconds.ToString() + appendedZeroEnd;
+            string duration = timeGap(startTime, endTime);
 
             Match currentMatch = new Match();
             currentMatch.CompeitorRed = redComp;
@@ -148,6 +173,40 @@ namespace TieRenTournament.Pages.Events
                 _context.Competitor.Attach(RedComp);
                 _context.Competitor.Attach(BlueComp);
             }
+        }
+
+        static int getTimeInSeconds(String str)
+        {
+
+            String[] curr_time = str.Split(':');
+            int t = Int32.Parse(curr_time[0]) * 60
+                    + Int32.Parse(curr_time[1]);
+
+            return t;
+        }
+
+        static String convertSecToTime(int t)
+        {
+            int min = (t % 3600) / 60;
+            String mm = min < 10 ? "0" + min.ToString()
+                    : min.ToString();
+            int sec = ((t % 3600) % 60);
+            String ss = sec < 10 ? "0" + sec.ToString()
+                    : sec.ToString();
+            String ans = mm + ":" + ss;
+            return ans;
+        }
+
+        // Function to find the time gap
+        static String timeGap(String st, String et)
+        {
+
+            int t1 = getTimeInSeconds(st);
+            int t2 = getTimeInSeconds(et);
+
+            int time_diff = (t1 - t2 < 0) ? t2 - t1 : t1 - t2;
+
+            return convertSecToTime(time_diff);
         }
     }
 }
