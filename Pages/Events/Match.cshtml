@@ -9,7 +9,14 @@
 
 <h2>@Model.RedComp.Bracket's Bracket</h2>
 <h3>Round:@Model.Round Match:@Model.Match </h3>
-
+<div id="container">
+    <p id="min-label" class="label">Minutes</p><p id="sec-label" class="label">Seconds</p>
+    </p><input id="minute" type="number" max="60" min="0" value="0" class="time"><p id="p2" class="semicolon">:</p><input id="second" type="number" max="60" min="0" value="0" class="time">
+    <button id="start" class="btn">Start</button>
+    <button id="pause" class="btn">Pause</button>
+    <button id="play" class="btn">Play</button>
+    <button id="reset" class="btn">Reset</button>
+</div>
 <div class="container">
     <div class="Minutes">Minutes</div>
     <div class="Seconds">Seconds</div>

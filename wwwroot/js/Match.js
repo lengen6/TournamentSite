@@ -76,5 +76,67 @@ blueScoreDecrease.addEventListener('click', () => {
 })
 
 
+const start = document.getElementById('start');
+const reset = document.getElementById('reset');
+const minute = document.getElementById("minute");
+const second = document.getElementById("second");
+const pause = document.getElementById("pause");
+const play = document.getElementById("play");
+let isPaused = false;
+
+
+start.addEventListener('click', function startFunction () {
+   
+    function startInterval() {
+        startTimer = setInterval(function () {
+            if (!isPaused) {
+                timer();
+            }
+
+            if (minute.value == 0 && second.value == 0) {
+                stopInterval();
+                isPaused = false;
+            }
+
+        }, 1000);
+    }   
+    startInterval();
+    start.setAttribute('disabled', '');
+})
+
+reset.addEventListener('click', function () {
+    minute.value = 0;
+    second.value = 0;
+    stopInterval()
+    isPaused = false;
+    start.removeAttribute('disabled');
+    
+})
+
+function timer() {
+    if (minute.value == 0 && second.value == 0) {
+        minute.value = 0;
+        second.value = 0;
+    } else if (second.value != 0) {
+        second.value--;
+    } else if (minute.value != 0 && second.value == 0) {
+        second.value = 59;
+        minute.value--;
+    }
+    return;
+}
+
+function stopInterval() {
+    clearInterval(startTimer);
+}
+
+pause.addEventListener('click', function(){
+    isPaused = true;
+})
+
+play.addEventListener('click', function () {
+    isPaused = false;
+})
+
 
 
