@@ -12,25 +12,25 @@ const second = document.getElementById("second");
 const pause = document.getElementById("pause");
 const play = document.getElementById("play");
 const sendButtons = document.querySelectorAll("send");
+const scoreRed = document.getElementsByClassName("scoreRed");
+const scoreBlue = document.getElementsByClassName("scoreBlue");
+const startMinutes = document.getElementsByClassName("startMinutes");
+const startSeconds = document.getElementsByClassName("startSeconds");
+const endMinutes = document.getElementsByClassName("endMinutes");
+const endSeconds = document.getElementsByClassName("endSeconds");
 let blueScore = 0;
 let redScore = 0;
 let isPaused = false;
 
-//No idea why I can't select based of a class name but it doesn't work unless selected by ID
 
 redScoreIncrease.addEventListener('click', () => {
 
     redScore++;
     redScoreDisplay.textContent = redScore.toString();
 
-    document.getElementById("scoreRedOne").value = redScore;
-    document.getElementById("scoreRedTwo").value = redScore;
-    document.getElementById("scoreRedThree").value = redScore;
-    document.getElementById("scoreRedFour").value = redScore;
-    document.getElementById("scoreRedFive").value = redScore;
-    document.getElementById("scoreRedSix").value = redScore;
-    document.getElementById("scoreRedSeven").value = redScore;
-    document.getElementById("scoreRedEight").value = redScore;
+    for (let i = 0; i < scoreRed.length; i++) {
+        scoreRed[i].value = redScore;
+    }
 })
 
 redScoreDecrease.addEventListener('click', () => {
@@ -40,14 +40,9 @@ redScoreDecrease.addEventListener('click', () => {
         redScoreDisplay.textContent = redScore.toString();
     }
 
-    document.getElementById("scoreRedOne").value = redScore;
-    document.getElementById("scoreRedTwo").value = redScore;
-    document.getElementById("scoreRedThree").value = redScore;
-    document.getElementById("scoreRedFour").value = redScore;
-    document.getElementById("scoreRedFive").value = redScore;
-    document.getElementById("scoreRedSix").value = redScore;
-    document.getElementById("scoreRedSeven").value = redScore;
-    document.getElementById("scoreRedEight").value = redScore;
+    for (let i = 0; i < scoreRed.length; i++) {
+        scoreRed[i].value = redScore;
+    }
 })
 
 blueScoreIncrease.addEventListener('click', () => {
@@ -55,14 +50,9 @@ blueScoreIncrease.addEventListener('click', () => {
     blueScore++;
     blueScoreDisplay.textContent = blueScore.toString();
 
-    document.getElementById("scoreBlueOne").value = blueScore;
-    document.getElementById("scoreBlueTwo").value = blueScore;
-    document.getElementById("scoreBlueThree").value = blueScore;
-    document.getElementById("scoreBlueFour").value = blueScore;
-    document.getElementById("scoreBlueFive").value = blueScore;
-    document.getElementById("scoreBlueSix").value = blueScore;
-    document.getElementById("scoreBlueSeven").value = blueScore;
-    document.getElementById("scoreBlueEight").value = blueScore;
+    for (let i = 0; i < scoreBlue.length; i++) {
+        scoreBlue[i].value = blueScore;
+    }
 })
 
 blueScoreDecrease.addEventListener('click', () => {
@@ -72,14 +62,9 @@ blueScoreDecrease.addEventListener('click', () => {
         blueScoreDisplay.textContent = blueScore.toString();
     }
 
-    document.getElementById("scoreBlueOne").value = blueScore;
-    document.getElementById("scoreBlueTwo").value = blueScore;
-    document.getElementById("scoreBlueThree").value = blueScore;
-    document.getElementById("scoreBlueFour").value = blueScore;
-    document.getElementById("scoreBlueFive").value = blueScore;
-    document.getElementById("scoreBlueSix").value = blueScore;
-    document.getElementById("scoreBlueSeven").value = blueScore;
-    document.getElementById("scoreBlueEight").value = blueScore;
+    for (let i = 0; i < scoreBlue.length; i++) {
+        scoreBlue[i].value = blueScore;
+    }
 })
 
 start.addEventListener('click', function startFunction () {
@@ -101,24 +86,14 @@ start.addEventListener('click', function startFunction () {
         }, 1000);
 
         //Start Minutes
-        document.getElementById("startMinutesOne").value = minute.value;
-        document.getElementById("startMinutesTwo").value = minute.value;
-        document.getElementById("startMinutesThree").value = minute.value;
-        document.getElementById("startMinutesFour").value = minute.value;
-        document.getElementById("startMinutesFive").value = minute.value;
-        document.getElementById("startMinutesSix").value = minute.value;
-        document.getElementById("startMinutesSeven").value = minute.value;
-        document.getElementById("startMinutesEight").value = minute.value;
+        for (let i = 0; i < startMinutes.length; i++) {
+            startMinutes[i].value = minute.value;
+        }
 
         //Start Seconds
-        document.getElementById("startSecondsOne").value = second.value;
-        document.getElementById("startSecondsTwo").value = second.value;
-        document.getElementById("startSecondsThree").value = second.value;
-        document.getElementById("startSecondsFour").value = second.value;
-        document.getElementById("startSecondsFive").value = second.value;
-        document.getElementById("startSecondsSix").value = second.value;
-        document.getElementById("startSecondsSeven").value = second.value;
-        document.getElementById("startSecondsEight").value = second.value;
+        for (let i = 0; i < startSeconds.length; i++) {
+            startSeconds[i].value = second.value;
+        }
     }   
     startInterval();
     start.setAttribute('disabled', '');
@@ -145,24 +120,14 @@ function timer() {
     }
 
     //End Minutes
-    document.getElementById("endMinutesOne").value = minute.value;
-    document.getElementById("endMinutesTwo").value = minute.value;
-    document.getElementById("endMinutesThree").value = minute.value;
-    document.getElementById("endMinutesFour").value = minute.value;
-    document.getElementById("endMinutesFive").value = minute.value;
-    document.getElementById("endMinutesSix").value = minute.value;
-    document.getElementById("endMinutesSeven").value = minute.value;
-    document.getElementById("endMinutesEight").value = minute.value;
+    for (let i = 0; i < endMinutes.length; i++) {
+        endMinutes[i].value = minute.value;
+    }
 
-    //End Seconds            
-    document.getElementById("endSecondsOne").value = second.value;
-    document.getElementById("endSecondsTwo").value = second.value;
-    document.getElementById("endSecondsThree").value = second.value;
-    document.getElementById("endSecondsFour").value = second.value;
-    document.getElementById("endSecondsFive").value = second.value;
-    document.getElementById("endSecondsSix").value = second.value;
-    document.getElementById("endSecondsSeven").value = second.value;
-    document.getElementById("endSecondsEight").value = second.value;
+    //End Seconds
+    for (let i = 0; i < endSeconds.length; i++) {
+        endSeconds[i].value = second.value;
+    }
 
     return;
 }

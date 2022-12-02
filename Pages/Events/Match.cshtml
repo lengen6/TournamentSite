@@ -11,7 +11,7 @@
 <h3>Round:@Model.Round Match:@Model.Match </h3>
 <div id="container">
     <p id="min-label" class="label">Minutes</p><p id="sec-label" class="label">Seconds</p>
-    <input id="minute" type="number" max="60" min="0" value="05" class="time" onplaying="leadingZeros(this)" /><p id="p2" class="semicolon">:</p><input id="second" type="number" max="60" mi n="0" value="00" class="time" onchange="leadingZeros(this)"/>
+    <input id="minute" type="number" max="60" min="0" value="05" class="time" onplaying="leadingZeros(this)" /><p id="p2" class="semicolon">:</p><input id="second" type="number" max="60" min="0" value="00" class="time" onchange="leadingZeros(this)"/>
     <button id="start" class="btn">Start</button>
     <button id="pause" class="btn">Pause</button>
     <button id="play" class="btn">Play</button>
@@ -33,12 +33,12 @@
             <form method="post">
                 <input asp-for="RedWins" value="true" type="hidden" />
                 <input asp-for="VictoryMethod" value="Submission" type="hidden" />
-                <input asp-for="RedScore" type="hidden" id="scoreRedOne" value="" />
-                <input asp-for="BlueScore" type="hidden" id="scoreBlueOne" value="" />
-                <input asp-for="StartMinutes" type= "hidden" id="startMinutesOne"/>
-                <input asp-for="StartSeconds" type="hidden" id="startSecondsOne" />
-                <input asp-for="EndMinutes" type="hidden" id="endMinutesOne" />
-                <input asp-for="EndSeconds" type="hidden" id="endSecondsOne" />
+                <input asp-for="RedScore" type="hidden" class="scoreRed" value="" />
+                <input asp-for="BlueScore" type="hidden" class="scoreBlue" value="" />
+                <input asp-for="StartMinutes" type= "hidden" class="startMinutes"/>
+                <input asp-for="StartSeconds" type="hidden" class="startSeconds" />
+                <input asp-for="EndMinutes" type="hidden" class="endMinutes" />
+                <input asp-for="EndSeconds" type="hidden" class="endSeconds" />
                 <input type="submit" value="Submission" asp-page-handler="Match" asp-route-elimination="@Model.Elimination" asp-route-match="@Model.Match" asp-route-round="@Model.Round" class="send"/>
             </form>
         </div>
@@ -46,12 +46,12 @@
             <form method="post">
                 <input asp-for="RedWins" value="false" type="hidden" />
                 <input asp-for="VictoryMethod" value="Opponent Disqualification" type="hidden" />
-                <input asp-for="RedScore" type="hidden" id="scoreRedTwo" value="" />
-                <input asp-for="BlueScore" type="hidden" id="scoreBlueTwo" value="" />
-                <input asp-for="StartMinutes" type="hidden" id="startMinutesTwo" value="" />
-                <input asp-for="StartSeconds" type="hidden" id="startSecondsTwo" value=""/>
-                <input asp-for="EndMinutes" type="hidden" id="endMinutesTwo" value=""/>
-                <input asp-for="EndSeconds" type="hidden" id="endSecondsTwo" value=""/>
+                <input asp-for="RedScore" type="hidden" class="scoreRed" value="" />
+                <input asp-for="BlueScore" type="hidden" class="scoreBlue" value="" />
+                <input asp-for="StartMinutes" type="hidden" class="startMinutes" value="" />
+                <input asp-for="StartSeconds" type="hidden" class="startSeconds" value=""/>
+                <input asp-for="EndMinutes" type="hidden" class="endMinutes" value=""/>
+                <input asp-for="EndSeconds" type="hidden" class="endSeconds" value=""/>
                 <input type="submit" value="Disqualification" asp-page-handler="Match" asp-route-elimination="@Model.Elimination" asp-route-match="@Model.Match" asp-route-round="@Model.Round" class="send" />
             </form>
         </div>
@@ -59,12 +59,12 @@
             <form method="post">
                 <input asp-for="RedWins" value="true" type="hidden" />
                 <input asp-for="VictoryMethod" value="Points" type="hidden" />
-                <input asp-for="RedScore" type="hidden" id="scoreRedThree" value="" />
-                <input asp-for="BlueScore" type="hidden" id="scoreBlueThree" value="" />
-                <input asp-for="StartMinutes" type="hidden" id="startMinutesThree" value="" />
-                <input asp-for="StartSeconds" type="hidden" id="startSecondsThree" value=""/>
-                <input asp-for="EndMinutes" type="hidden" id="endMinutesThree" value=""/>
-                <input asp-for="EndSeconds" type="hidden" id="endSecondsThree" value=""/>
+                <input asp-for="RedScore" type="hidden" class="scoreRed" value="" />
+                <input asp-for="BlueScore" type="hidden" class="scoreBlue" value="" />
+                <input asp-for="StartMinutes" type="hidden" class="startMinutes" value="" />
+                <input asp-for="StartSeconds" type="hidden" class="startSeconds" value=""/>
+                <input asp-for="EndMinutes" type="hidden" class="endMinutes" value=""/>
+                <input asp-for="EndSeconds" type="hidden" class="endSeconds" value=""/>
                 <input type="submit" value="Points" asp-page-handler="Match" asp-route-elimination="@Model.Elimination" asp-route-match="@Model.Match" asp-route-round="@Model.Round" class="send" />
             </form>
         </div>
@@ -72,12 +72,12 @@
             <form method="post">
                 <input asp-for="RedWins" value="true" type="hidden" />
                 <input asp-for="VictoryMethod" value="Decision" type="hidden" />
-                <input asp-for="RedScore" type="hidden" id="scoreRedFour" value="" />
-                <input asp-for="BlueScore" type="hidden" id="scoreBlueFour" value="" />
-                <input asp-for="StartMinutes" type="hidden" id="startMinutesFour" value=""/>
-                <input asp-for="StartSeconds" type="hidden" id="startSecondsFour" value=""/>
-                <input asp-for="EndMinutes" type="hidden" id="endMinutesFour" value=""/>
-                <input asp-for="EndSeconds" type="hidden" id="endSecondsFour" value=""/>
+                <input asp-for="RedScore" type="hidden" class="scoreRed" value="" />
+                <input asp-for="BlueScore" type="hidden" class="scoreBlue" value="" />
+                <input asp-for="StartMinutes" type="hidden" class="startMinutes" value=""/>
+                <input asp-for="StartSeconds" type="hidden" class="startSeconds" value=""/>
+                <input asp-for="EndMinutes" type="hidden" class="endMinutes" value=""/>
+                <input asp-for="EndSeconds" type="hidden" class="endSeconds" value=""/>
                 <input type="submit" value="Decision" asp-page-handler="Match" asp-route-elimination="@Model.Elimination" asp-route-match="@Model.Match" asp-route-round="@Model.Round" class="send" />
             </form>
         </div>
@@ -87,12 +87,12 @@
             <form method="post">
                 <input type="hidden" asp-for="RedWins" value="false" />
                 <input type="hidden" asp-for="VictoryMethod" value="Submission" />
-                <input asp-for="RedScore" type="hidden" id="scoreRedFive" value="" />
-                <input asp-for="BlueScore" type="hidden" id="scoreBlueFive" value="" />
-                <input asp-for="StartMinutes" type="hidden" id="startMinutesFive" value=""/>
-                <input asp-for="StartSeconds" type="hidden" id="startSecondsFive" value=""/>
-                <input asp-for="EndMinutes" type="hidden" id="endMinutesFive" value=""/>
-                <input asp-for="EndSeconds" type="hidden" id="endSecondsFive" value=""/>
+                <input asp-for="RedScore" type="hidden" class="scoreRed" value="" />
+                <input asp-for="BlueScore" type="hidden" class="scoreBlue" value="" />
+                <input asp-for="StartMinutes" type="hidden" class="startMinutes" value=""/>
+                <input asp-for="StartSeconds" type="hidden" class="startSeconds" value=""/>
+                <input asp-for="EndMinutes" type="hidden" class="endMinutes" value=""/>
+                <input asp-for="EndSeconds" type="hidden" class="endSeconds" value=""/>
                 <input type="submit" value="Submission" asp-page-handler="Match" asp-route-elimination="@Model.Elimination" asp-route-match="@Model.Match" asp-route-round="@Model.Round" class="send" />
             </form>
         </div>
@@ -100,12 +100,12 @@
             <form method="post">
                 <input asp-for="RedWins" value="true" type="hidden" />
                 <input asp-for="VictoryMethod" value="Opponent Disqualification" type="hidden" />
-                <input asp-for="RedScore" type="hidden" id="scoreRedSix" value="" />
-                <input asp-for="BlueScore" type="hidden" id="scoreBlueSix" value="" />
-                <input asp-for="StartMinutes" type="hidden" id="startMinutesSix" value=""/>
-                <input asp-for="StartSeconds" type="hidden" id="startSecondsSix" value=""/>
-                <input asp-for="EndMinutes" type="hidden" id="endMinutesSix" value=""/>
-                <input asp-for="EndSeconds" type="hidden" id="endSecondsSix" value=""/>
+                <input asp-for="RedScore" type="hidden" class="scoreRed" value="" />
+                <input asp-for="BlueScore" type="hidden" class="scoreBlue" value="" />
+                <input asp-for="StartMinutes" type="hidden" class="startMinutes" value=""/>
+                <input asp-for="StartSeconds" type="hidden" class="startSeconds" value=""/>
+                <input asp-for="EndMinutes" type="hidden" class="endMinutes" value=""/>
+                <input asp-for="EndSeconds" type="hidden" class="endSeconds" value=""/>
                 <input type="submit" value="Disqualification" asp-page-handler="Match" asp-route-elimination="@Model.Elimination" asp-route-match="@Model.Match" asp-route-round="@Model.Round" class="send" />
             </form>
         </div>
@@ -113,12 +113,12 @@
             <form method="post">
                 <input type="hidden" asp-for="RedWins" value="false" />
                 <input type="hidden" asp-for="VictoryMethod" value="Points" />
-                <input asp-for="RedScore" type="hidden" id="scoreRedSeven" value="" />
-                <input asp-for="BlueScore" type="hidden" id="scoreBlueSeven" value="" />
-                <input asp-for="StartMinutes" type="hidden" id="startMinutesSeven" value=""/>
-                <input asp-for="StartSeconds" type="hidden" id="startSecondsSeven" value=""/>
-                <input asp-for="EndMinutes" type="hidden" id="endMinutesSeven" value=""/>
-                <input asp-for="EndSeconds" type="hidden" id="endSecondsSeven" value=""/>
+                <input asp-for="RedScore" type="hidden" class="scoreRed" value="" />
+                <input asp-for="BlueScore" type="hidden" class="scoreBlue" value="" />
+                <input asp-for="StartMinutes" type="hidden" class="startMinutes" value=""/>
+                <input asp-for="StartSeconds" type="hidden" class="startSeconds" value=""/>
+                <input asp-for="EndMinutes" type="hidden" class="endMinutes" value=""/>
+                <input asp-for="EndSeconds" type="hidden" class="endSeconds" value=""/>
                 <input type="submit" value="Points" asp-page-handler="Match" asp-route-elimination="@Model.Elimination" asp-route-match="@Model.Match" asp-route-round="@Model.Round" class="send" />
             </form>
         </div>
@@ -126,12 +126,12 @@
             <form method="post">
                 <input type="hidden" asp-for="RedWins" value="false" />
                 <input type="hidden" asp-for="VictoryMethod" value="Decision" />
-                <input asp-for="RedScore" type="hidden" id="scoreRedEight" value="" />
-                <input asp-for="BlueScore" type="hidden" id="scoreBlueEight" value="" />
-                <input asp-for="StartMinutes" type="hidden" id="startMinutesEight" />
-                <input asp-for="StartSeconds" type="hidden" id="startSecondsEight" />
-                <input asp-for="EndMinutes" type="hidden" id="endMinutesEight" />
-                <input asp-for="EndSeconds" type="hidden" id="endSecondsEight" />
+                <input asp-for="RedScore" type="hidden" class="scoreRed" value="" />
+                <input asp-for="BlueScore" type="hidden" class="scoreBlue" value="" />
+                <input asp-for="StartMinutes" type="hidden" class="startMinutes" />
+                <input asp-for="StartSeconds" type="hidden" class="startSeconds" />
+                <input asp-for="EndMinutes" type="hidden" class="endMinutes" />
+                <input asp-for="EndSeconds" type="hidden" class="endSeconds" />
                 <input type="submit" value="Decision" asp-page-handler="Match" asp-route-elimination="@Model.Elimination" asp-route-match="@Model.Match" asp-route-round="@Model.Round" class="send" />
             </form>
         </div>
