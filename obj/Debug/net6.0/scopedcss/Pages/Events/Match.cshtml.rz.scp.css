@@ -1,4 +1,4 @@
-.container[b-nt52lfo3o2] {
+/*.container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -13,55 +13,55 @@
         "Points-Red Points-Red Points-Blue Points-Blue";
 }
 
-.Minutes[b-nt52lfo3o2] {
+.Minutes {
     grid-area: Minutes;
 }
 
-.Seconds[b-nt52lfo3o2] {
+.Seconds {
     grid-area: Seconds;
 }
 
-.Red[b-nt52lfo3o2] {
+.Red {
     grid-area: Red;
     background-color: red;
     color: white;
 }
 
-.Blue[b-nt52lfo3o2] {
+.Blue {
     grid-area: Blue;
     background-color: blue;
     color: white;
 }
 
-.Plus-Blue[b-nt52lfo3o2] {
+.Plus-Blue {
     grid-area: Plus-Blue;
 }
 
-.Minus-Blue[b-nt52lfo3o2] {
+.Minus-Blue {
     grid-area: Minus-Blue;
 }
 
-.Plus-Red[b-nt52lfo3o2] {
+.Plus-Red {
     grid-area: Plus-Red;
 }
 
-.Minus-Red[b-nt52lfo3o2] {
+.Minus-Red {
     grid-area: Minus-Red;
 }
 
-.Timer[b-nt52lfo3o2] {
+.Timer {
     grid-area: Timer;
 }
 
-.Points-Red[b-nt52lfo3o2] {
+.Points-Red {
     grid-area: Points-Red;
 }
 
-.Points-Blue[b-nt52lfo3o2] {
+.Points-Blue {
     grid-area: Points-Blue;
 }
 
-.Outcome-Red[b-nt52lfo3o2] {
+.Outcome-Red {
     display: grid;
     grid-template-columns: 0.8fr 1.2fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
@@ -75,24 +75,24 @@
     grid-area: Outcome-Red;
 }
 
-.Submission-Red[b-nt52lfo3o2] {
+.Submission-Red {
     grid-area: Submission-Red;
 
 }
 
-.DQ-Red[b-nt52lfo3o2] {
+.DQ-Red {
     grid-area: DQ-Red;
 }
 
-.Points-Red[b-nt52lfo3o2] {
+.Points-Red {
     grid-area: Points-Red;
 }
 
-.Decision-Red[b-nt52lfo3o2] {
+.Decision-Red {
     grid-area: Decision-Red;
 }
 
-.Outcome-Blue[b-nt52lfo3o2] {
+.Outcome-Blue {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
@@ -106,23 +106,23 @@
     grid-area: Outcome-Blue;
 }
 
-.Submission-Blue[b-nt52lfo3o2] {
+.Submission-Blue {
     grid-area: Submission-Blue;
 }
 
-.DQ-Blue[b-nt52lfo3o2] {
+.DQ-Blue {
     grid-area: DQ-Blue;
 }
 
-.Points-Blue[b-nt52lfo3o2] {
+.Points-Blue {
     grid-area: Points-Blue;
 }
 
-.Decision-Blue[b-nt52lfo3o2] {
+.Decision-Blue {
     grid-area: Decision-Blue;
 }
 
-#container[b-nt52lfo3o2] {
+#container {
     height: 200px;
     width: 700px;
     background-color: #F5E4C3;
@@ -133,22 +133,22 @@
     grid-template-rows: repeat(3, 1fr);
 }
 
-.label[b-nt52lfo3o2] {
+.label {
     margin: 0;
     justify-self: center;
     align-self: center;
     font-size: 30px;
 }
 
-#min-label[b-nt52lfo3o2] {
+#min-label {
     grid-area: 1 / 3 / 1 / 4;
 }
 
-#sec-label[b-nt52lfo3o2] {
+#sec-label {
     grid-area: 1 / 4 / 1 / 5;
 }
 
-.time[b-nt52lfo3o2] {
+.time {
     justify-self: center;
     align-self: center;
     border: none;
@@ -158,31 +158,31 @@
     height: 50px;
 }
 
-.semicolon[b-nt52lfo3o2] {
+.semicolon {
     justify-self: center;
     align-self: center;
     font-size: 30px;
     margin: 0;
 }
 
-#p1[b-nt52lfo3o2] {
+#p1 {
     grid-area: 2 / 2 / 2 / 4;
 }
 
-#minute[b-nt52lfo3o2] {
+#minute {
     grid-area: 2 / 3 / 2 / 4;
 }
 
-#p2[b-nt52lfo3o2] {
+#p2 {
     grid-area: 2 / 3 / 2 / 5;
 }
 
-#second[b-nt52lfo3o2] {
+#second {
     grid-area: 2 / 4 / 2 / 5;
 }
 
 
-.btn[b-nt52lfo3o2] {
+.btn {
     align-self: center;
     width: 100px;
     height: 40px;
@@ -190,10 +190,11 @@
     justify-self: center;
 }
 
-#start[b-nt52lfo3o2] {
+#start {
     grid-area: 3 / 2 / 3 / 4;
 }
 
-#reset[b-nt52lfo3o2] {
+#reset {
     grid-area: 3 / 3 / 3 / 5;
 }
+*/
