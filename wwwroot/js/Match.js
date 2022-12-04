@@ -72,7 +72,7 @@ blueScoreDecrease.addEventListener('click', () => {
 start.addEventListener('click', function startFunction () {
 
     function startInterval() {
-        beep();
+        startGong();
         startTimer = setInterval(function () {
             if (!isPaused) {
                 timer();
@@ -105,6 +105,10 @@ start.addEventListener('click', function startFunction () {
 reset.addEventListener('click', function () {
     minute.value = 0;
     second.value = 0;
+    redScore = 0;
+    blueScore = 0;
+    redScoreDisplay.textContent = redScore.toString();
+    blueScoreDisplay.textContent = blueScore.toString();
     stopInterval()
     isPaused = false;
     start.removeAttribute('disabled');
@@ -168,12 +172,14 @@ function stopInterval() {
     clearInterval(startTimer);
 }
 
-pause.addEventListener('click', function(){
+pause.addEventListener('click', function () {
+    lowBeep();
+    setTimeout(lowBeep, 500);
     isPaused = true;
 })
 
 play.addEventListener('click', function () {
-    highBeep();
+    lowBeep();
     isPaused = false;
 })
 
@@ -183,7 +189,7 @@ function leadingZeros(input) {
     }
 }
 
-function beep() {
+function startGong() {
     document.getElementById('start-gong').play();
 }
 function highBeep() {
@@ -191,6 +197,9 @@ function highBeep() {
 }
 function endGong() {
     document.getElementById('end-gong').play();
+}
+function lowBeep() {
+    document.getElementById('low-beep').play();
 }
 
 

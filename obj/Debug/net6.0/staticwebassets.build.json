@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "HTOruYtpN40/3TWSW9NjFpZHuyQz0VQz1fTXnB2IsAs=",
+  "Hash": "1SzWS/Tip4WuQ3wCbP2so0xeObckcCrWLaNYYyPTV8U=",
   "Source": "TieRenTournament",
   "BasePath": "_content/TieRenTournament",
   "Mode": "Default",
@@ -2157,6 +2157,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Identity": "C:\\Users\\Michael\\OneDrive - Lorain County Community College\\Docs\\College Folders\\Fall 2022\\CISS 243\\TournamentSite\\wwwroot\\low_beep.mp3",
+      "SourceId": "TieRenTournament",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Michael\\OneDrive - Lorain County Community College\\Docs\\College Folders\\Fall 2022\\CISS 243\\TournamentSite\\wwwroot\\",
+      "BasePath": "_content/TieRenTournament",
+      "RelativePath": "low_beep.mp3",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\low_beep.mp3"
     },
     {
       "Identity": "C:\\Users\\Michael\\OneDrive - Lorain County Community College\\Docs\\College Folders\\Fall 2022\\CISS 243\\TournamentSite\\wwwroot\\start_gong.mp3",
