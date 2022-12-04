@@ -141,8 +141,8 @@
 <div class="container">
     <div class="row">
         <div class="col outline align-self-center">
-            <h2 class="float-start text-center">Bracket</h2>
-            <h2 class="float-end text-center">Round: 1 Match: 1</h2>
+            <h2 class="float-start text-center">@Model.RedComp.Bracket's Bracket</h2>
+            <h2 class="float-end text-center">Round:@Model.Round Match:@Model.Match</h2>
         </div>
     </div>
     <br>
@@ -152,44 +152,156 @@
         <div class="col outline text-center"><h3>Seconds</h3></div>
     </div>
     <div class="row align-items-center">
-        <div class="col outline text-center"><h1>00</h1></div>
-        <div class="col outline text-center"><h1>00</h1></div>
+        <div class="col outline text-center"><h1><input id="minute" type="number" max="60" min="0" value="05" class="time" onplaying="leadingZeros(this)" /></h1></div>
+        <div class="col outline text-center"><h1><input id="second" type="number" max="60" min="0" value="00" class="time" onchange="leadingZeros(this)" /></h1></div>
     </div>
     <div class="row align-items-center">
-        <div class="col outline text-center"><h5>Start</h5></div>
-        <div class="col outline text-center"><h5>Reset</h5></div>
-        <div class="col outline text-center"><h5>Pause</h5></div>
-        <div class="col outline text-center"><h5>Resume</h5></div>
-    </div>
-    <br>
-    <br>
-    <div class="row align-items-center">
-        <div class="col outline text-center"><h1>Red</h1></div>
-        <div class="col outline text-center"><h1>Blue</h1></div>
-    </div>
-    <div class="row align-items-center">
-        <div class="col outline text-center"><h3>+</h3></div>
-        <div class="col outline text-center"><h3>-</h3></div>
-        <div class="col outline text-center"><h3>+</h3></div>
-        <div class="col outline text-center"><h3>-</h3></div>
-    </div>
-    <div class="row align-items-center">
-        <div class="col outline text-center"><h2>Score: </h2></div>
-        <div class="col outline text-center"><h2>Score: </h2></div>
+        <div class="col outline text-center"><h5><button id="start">Start</button></h5></div>
+        <div class="col outline text-center"><h5><button id="reset">Reset</button></h5></div>
+        <div class="col outline text-center"><h5><button id="pause">Pause</button></h5></div>
+        <div class="col outline text-center"><h5><button id="play">Resume</button></h5></div>
     </div>
     <br>
     <br>
     <div class="row align-items-center">
-        <div class="col outline text-center"><h3>Sub</h3></div>
-        <div class="col outline text-center"><h3>DQ</h3></div>
-        <div class="col outline text-center"><h3>Sub</h3></div>
-        <div class="col outline text-center"><h3>DQ</h3></div>
+        <div class="col outline text-center" id="Red"><h1>@Model.RedComp.FirstName @Model.RedComp.LastName</h1></div>
+        <div class="col outline text-center" id="Blue"><h1>@Model.BlueComp.FirstName @Model.BlueComp.LastName</h1></div>
     </div>
     <div class="row align-items-center">
-        <div class="col outline text-center"><h3>Points</h3></div>
-        <div class="col outline text-center"><h3>Decision</h3></div>
-        <div class="col outline text-center"><h3>Points</h3></div>
-        <div class="col outline text-center"><h3>Decision</h3></div>
+        <div class="col outline text-center Plus-Red"><button><h3>+</h3></button></div>
+        <div class="col outline text-center Minus-Red"><button><h3>-</h3></button></div>
+        <div class="col outline text-center Plus-Blue"><button><h3>+</h3></button></div>
+        <div class="col outline text-center Minus-Blue"><button><h3>-</h3></button></div>
+    </div>
+    <div class="row align-items-center">
+        <div class="col outline text-center"><h2 class="Points-Red">0</h2></div>
+        <div class="col outline text-center"><h2 class="Points-Blue">0</h2></div>
+    </div>
+    <br>
+    <br>
+    <div class="row align-items-center">
+        <div class="col outline text-center">
+            <h3>
+                <form method="post">
+                    <input asp-for="RedWins" value="true" type="hidden" />
+                    <input asp-for="VictoryMethod" value="Submission" type="hidden" />
+                    <input asp-for="RedScore" type="hidden" class="scoreRed" value="" />
+                    <input asp-for="BlueScore" type="hidden" class="scoreBlue" value="" />
+                    <input asp-for="StartMinutes" type="hidden" class="startMinutes" />
+                    <input asp-for="StartSeconds" type="hidden" class="startSeconds" />
+                    <input asp-for="EndMinutes" type="hidden" class="endMinutes" />
+                    <input asp-for="EndSeconds" type="hidden" class="endSeconds" />
+                    <input type="submit" value="Sub" asp-page-handler="Match" asp-route-elimination="@Model.Elimination" asp-route-match="@Model.Match" asp-route-round="@Model.Round" class="send" />
+                </form>
+            </h3>
+        </div>
+        <div class="col outline text-center">
+            <h3>
+                <form method="post">
+                    <input asp-for="RedWins" value="false" type="hidden" />
+                    <input asp-for="VictoryMethod" value="Opponent Disqualification" type="hidden" />
+                    <input asp-for="RedScore" type="hidden" class="scoreRed" value="" />
+                    <input asp-for="BlueScore" type="hidden" class="scoreBlue" value="" />
+                    <input asp-for="StartMinutes" type="hidden" class="startMinutes" value="" />
+                    <input asp-for="StartSeconds" type="hidden" class="startSeconds" value="" />
+                    <input asp-for="EndMinutes" type="hidden" class="endMinutes" value="" />
+                    <input asp-for="EndSeconds" type="hidden" class="endSeconds" value="" />
+                    <input type="submit" value="DQ" asp-page-handler="Match" asp-route-elimination="@Model.Elimination" asp-route-match="@Model.Match" asp-route-round="@Model.Round" class="send" />
+                </form>
+            </h3>
+        </div>
+        <div class="col outline text-center">
+            <h3>
+                <form method="post">
+                    <input type="hidden" asp-for="RedWins" value="false" />
+                    <input type="hidden" asp-for="VictoryMethod" value="Submission" />
+                    <input asp-for="RedScore" type="hidden" class="scoreRed" value="" />
+                    <input asp-for="BlueScore" type="hidden" class="scoreBlue" value="" />
+                    <input asp-for="StartMinutes" type="hidden" class="startMinutes" value="" />
+                    <input asp-for="StartSeconds" type="hidden" class="startSeconds" value="" />
+                    <input asp-for="EndMinutes" type="hidden" class="endMinutes" value="" />
+                    <input asp-for="EndSeconds" type="hidden" class="endSeconds" value="" />
+                    <input type="submit" value="Sub" asp-page-handler="Match" asp-route-elimination="@Model.Elimination" asp-route-match="@Model.Match" asp-route-round="@Model.Round" class="send" />
+                </form>
+            </h3>
+        </div>
+        <div class="col outline text-center">
+            <h3>
+                <form method="post">
+                    <input asp-for="RedWins" value="true" type="hidden" />
+                    <input asp-for="VictoryMethod" value="Opponent Disqualification" type="hidden" />
+                    <input asp-for="RedScore" type="hidden" class="scoreRed" value="" />
+                    <input asp-for="BlueScore" type="hidden" class="scoreBlue" value="" />
+                    <input asp-for="StartMinutes" type="hidden" class="startMinutes" value="" />
+                    <input asp-for="StartSeconds" type="hidden" class="startSeconds" value="" />
+                    <input asp-for="EndMinutes" type="hidden" class="endMinutes" value="" />
+                    <input asp-for="EndSeconds" type="hidden" class="endSeconds" value="" />
+                    <input type="submit" value="DQ" asp-page-handler="Match" asp-route-elimination="@Model.Elimination" asp-route-match="@Model.Match" asp-route-round="@Model.Round" class="send" />
+                </form>
+            </h3>
+        </div>
+    </div>
+    <div class="row align-items-center">
+        <div class="col outline text-center">
+            <h3>
+                <form method="post">
+                    <input asp-for="RedWins" value="true" type="hidden" />
+                    <input asp-for="VictoryMethod" value="Points" type="hidden" />
+                    <input asp-for="RedScore" type="hidden" class="scoreRed" value="" />
+                    <input asp-for="BlueScore" type="hidden" class="scoreBlue" value="" />
+                    <input asp-for="StartMinutes" type="hidden" class="startMinutes" value="" />
+                    <input asp-for="StartSeconds" type="hidden" class="startSeconds" value="" />
+                    <input asp-for="EndMinutes" type="hidden" class="endMinutes" value="" />
+                    <input asp-for="EndSeconds" type="hidden" class="endSeconds" value="" />
+                    <input type="submit" value="Points" asp-page-handler="Match" asp-route-elimination="@Model.Elimination" asp-route-match="@Model.Match" asp-route-round="@Model.Round" class="send" />
+                </form>
+            </h3>
+        </div>
+        <div class="col outline text-center">
+            <h3>
+                <form method="post">
+                    <input asp-for="RedWins" value="true" type="hidden" />
+                    <input asp-for="VictoryMethod" value="Decision" type="hidden" />
+                    <input asp-for="RedScore" type="hidden" class="scoreRed" value="" />
+                    <input asp-for="BlueScore" type="hidden" class="scoreBlue" value="" />
+                    <input asp-for="StartMinutes" type="hidden" class="startMinutes" value="" />
+                    <input asp-for="StartSeconds" type="hidden" class="startSeconds" value="" />
+                    <input asp-for="EndMinutes" type="hidden" class="endMinutes" value="" />
+                    <input asp-for="EndSeconds" type="hidden" class="endSeconds" value="" />
+                    <input type="submit" value="Decision" asp-page-handler="Match" asp-route-elimination="@Model.Elimination" asp-route-match="@Model.Match" asp-route-round="@Model.Round" class="send" />
+                </form>
+            </h3>
+        </div>
+        <div class="col outline text-center">
+            <h3>
+                <form method="post">
+                <input type="hidden" asp-for="RedWins" value="false" />
+                <input type="hidden" asp-for="VictoryMethod" value="Points" />
+                <input asp-for="RedScore" type="hidden" class="scoreRed" value="" />
+                <input asp-for="BlueScore" type="hidden" class="scoreBlue" value="" />
+                <input asp-for="StartMinutes" type="hidden" class="startMinutes" value=""/>
+                <input asp-for="StartSeconds" type="hidden" class="startSeconds" value=""/>
+                <input asp-for="EndMinutes" type="hidden" class="endMinutes" value=""/>
+                <input asp-for="EndSeconds" type="hidden" class="endSeconds" value=""/>
+                <input type="submit" value="Points" asp-page-handler="Match" asp-route-elimination="@Model.Elimination" asp-route-match="@Model.Match" asp-route-round="@Model.Round" class="send" />
+            </form>
+            </h3>
+        </div>
+        <div class="col outline text-center">
+            <h3>
+                <form method="post">
+                    <input type="hidden" asp-for="RedWins" value="false" />
+                    <input type="hidden" asp-for="VictoryMethod" value="Decision" />
+                    <input asp-for="RedScore" type="hidden" class="scoreRed" value="" />
+                    <input asp-for="BlueScore" type="hidden" class="scoreBlue" value="" />
+                    <input asp-for="StartMinutes" type="hidden" class="startMinutes" />
+                    <input asp-for="StartSeconds" type="hidden" class="startSeconds" />
+                    <input asp-for="EndMinutes" type="hidden" class="endMinutes" />
+                    <input asp-for="EndSeconds" type="hidden" class="endSeconds" />
+                    <input type="submit" value="Decision" asp-page-handler="Match" asp-route-elimination="@Model.Elimination" asp-route-match="@Model.Match" asp-route-round="@Model.Round" class="send" />
+                </form>
+            </h3>
+        </div>
     </div>
 
 </div>

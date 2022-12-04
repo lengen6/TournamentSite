@@ -19,3 +19,33 @@ body {
 .outline {
     outline: 1px solid black;
 }
+
+#Red{
+    background-color: red;
+    color: white;
+}
+
+#Blue {
+    background-color: blue;
+    color: white;
+}
+
+button {
+    all: unset;
+    cursor: pointer;
+}
+
+    button:hover {
+        color: blue;
+        outline: grey 5px auto;
+    }
+h3 form input {
+    all: unset;
+    cursor: pointer;
+    font-weight: bold;
+    font-style: italic;
+}
+    input:hover {
+        color: blue;
+        outline: grey 5px auto;
+    }

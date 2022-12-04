@@ -536,7 +536,6 @@ C:\Users\Michael\OneDrive - Lorain County Community College\Docs\College Folders
 C:\Users\Michael\OneDrive - Lorain County Community College\Docs\College Folders\Fall 2022\CISS 243\TournamentSite\obj\Debug\net6.0\TieRenTournament.RazorAssemblyInfo.cs
 C:\Users\Michael\OneDrive - Lorain County Community College\Docs\College Folders\Fall 2022\CISS 243\TournamentSite\obj\Debug\net6.0\staticwebassets.build.json
 C:\Users\Michael\OneDrive - Lorain County Community College\Docs\College Folders\Fall 2022\CISS 243\TournamentSite\obj\Debug\net6.0\staticwebassets.development.json
-C:\Users\Michael\OneDrive - Lorain County Community College\Docs\College Folders\Fall 2022\CISS 243\TournamentSite\obj\Debug\net6.0\scopedcss\Pages\Events\Match.cshtml.rz.scp.css
 C:\Users\Michael\OneDrive - Lorain County Community College\Docs\College Folders\Fall 2022\CISS 243\TournamentSite\obj\Debug\net6.0\scopedcss\Pages\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\Michael\OneDrive - Lorain County Community College\Docs\College Folders\Fall 2022\CISS 243\TournamentSite\obj\Debug\net6.0\scopedcss\bundle\TieRenTournament.styles.css
 C:\Users\Michael\OneDrive - Lorain County Community College\Docs\College Folders\Fall 2022\CISS 243\TournamentSite\obj\Debug\net6.0\scopedcss\projectbundle\TieRenTournament.bundle.scp.css
