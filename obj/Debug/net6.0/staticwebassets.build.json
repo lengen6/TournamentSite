@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "axCNrDuz3LTIDOWd7/GziOSY0+hSChoVKR82YaHQ/q8=",
+  "Hash": "HTOruYtpN40/3TWSW9NjFpZHuyQz0VQz1fTXnB2IsAs=",
   "Source": "TieRenTournament",
   "BasePath": "_content/TieRenTournament",
   "Mode": "Default",
@@ -1071,23 +1071,6 @@
       "OriginalItemSpec": "C:\\Users\\Michael\\OneDrive - Lorain County Community College\\Docs\\College Folders\\Fall 2022\\CISS 243\\TournamentSite\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\TieRenTournament.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Users\\Michael\\OneDrive - Lorain County Community College\\Docs\\College Folders\\Fall 2022\\CISS 243\\TournamentSite\\wwwroot\\css\\IronMan.png",
-      "SourceId": "TieRenTournament",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Michael\\OneDrive - Lorain County Community College\\Docs\\College Folders\\Fall 2022\\CISS 243\\TournamentSite\\wwwroot\\",
-      "BasePath": "_content/TieRenTournament",
-      "RelativePath": "css/IronMan.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\IronMan.png"
-    },
-    {
       "Identity": "C:\\Users\\Michael\\OneDrive - Lorain County Community College\\Docs\\College Folders\\Fall 2022\\CISS 243\\TournamentSite\\wwwroot\\css\\site.css",
       "SourceId": "TieRenTournament",
       "SourceType": "Discovered",
@@ -1105,6 +1088,23 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
+      "Identity": "C:\\Users\\Michael\\OneDrive - Lorain County Community College\\Docs\\College Folders\\Fall 2022\\CISS 243\\TournamentSite\\wwwroot\\end_gong.mp3",
+      "SourceId": "TieRenTournament",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Michael\\OneDrive - Lorain County Community College\\Docs\\College Folders\\Fall 2022\\CISS 243\\TournamentSite\\wwwroot\\",
+      "BasePath": "_content/TieRenTournament",
+      "RelativePath": "end_gong.mp3",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\end_gong.mp3"
+    },
+    {
       "Identity": "C:\\Users\\Michael\\OneDrive - Lorain County Community College\\Docs\\College Folders\\Fall 2022\\CISS 243\\TournamentSite\\wwwroot\\favicon.ico",
       "SourceId": "TieRenTournament",
       "SourceType": "Discovered",
@@ -1120,6 +1120,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\Michael\\OneDrive - Lorain County Community College\\Docs\\College Folders\\Fall 2022\\CISS 243\\TournamentSite\\wwwroot\\high_beep.mp3",
+      "SourceId": "TieRenTournament",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Michael\\OneDrive - Lorain County Community College\\Docs\\College Folders\\Fall 2022\\CISS 243\\TournamentSite\\wwwroot\\",
+      "BasePath": "_content/TieRenTournament",
+      "RelativePath": "high_beep.mp3",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\high_beep.mp3"
+    },
+    {
+      "Identity": "C:\\Users\\Michael\\OneDrive - Lorain County Community College\\Docs\\College Folders\\Fall 2022\\CISS 243\\TournamentSite\\wwwroot\\IronMan.png",
+      "SourceId": "TieRenTournament",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Michael\\OneDrive - Lorain County Community College\\Docs\\College Folders\\Fall 2022\\CISS 243\\TournamentSite\\wwwroot\\",
+      "BasePath": "_content/TieRenTournament",
+      "RelativePath": "IronMan.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\IronMan.png"
     },
     {
       "Identity": "C:\\Users\\Michael\\OneDrive - Lorain County Community College\\Docs\\College Folders\\Fall 2022\\CISS 243\\TournamentSite\\wwwroot\\js\\Match.js",
@@ -2123,6 +2157,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Identity": "C:\\Users\\Michael\\OneDrive - Lorain County Community College\\Docs\\College Folders\\Fall 2022\\CISS 243\\TournamentSite\\wwwroot\\start_gong.mp3",
+      "SourceId": "TieRenTournament",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Michael\\OneDrive - Lorain County Community College\\Docs\\College Folders\\Fall 2022\\CISS 243\\TournamentSite\\wwwroot\\",
+      "BasePath": "_content/TieRenTournament",
+      "RelativePath": "start_gong.mp3",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\start_gong.mp3"
     }
   ]
 }

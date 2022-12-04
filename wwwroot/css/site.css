@@ -49,3 +49,15 @@ h3 form input {
         color: blue;
         outline: grey 5px auto;
     }
+
+.sound {
+    position: absolute;
+    top: -100000em;
+}
+
+input[disabled]{
+    color: lightgray;
+}
+button[disabled] {
+    color: lightgray;
+}

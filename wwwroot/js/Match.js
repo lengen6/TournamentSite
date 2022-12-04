@@ -18,6 +18,8 @@ const startMinutes = document.getElementsByClassName("startMinutes");
 const startSeconds = document.getElementsByClassName("startSeconds");
 const endMinutes = document.getElementsByClassName("endMinutes");
 const endSeconds = document.getElementsByClassName("endSeconds");
+const decision = document.getElementsByClassName("decision");
+const points = document.getElementsByClassName("points");
 let blueScore = 0;
 let redScore = 0;
 let isPaused = false;
@@ -68,8 +70,9 @@ blueScoreDecrease.addEventListener('click', () => {
 })
 
 start.addEventListener('click', function startFunction () {
-   
+
     function startInterval() {
+        beep();
         startTimer = setInterval(function () {
             if (!isPaused) {
                 timer();
@@ -105,7 +108,12 @@ reset.addEventListener('click', function () {
     stopInterval()
     isPaused = false;
     start.removeAttribute('disabled');
-    
+    for (let i = 0; i < decision.length; i++) {
+        decision[i].setAttribute('disabled', '');
+    }
+    for (let i = 0; i < points.length; i++) {
+        points[i].setAttribute('disabled', '');
+    }
 })
 
 function timer() {
@@ -117,6 +125,30 @@ function timer() {
     } else if (minute.value != 0 && second.value == 0) {
         second.value = 59;
         minute.value--;
+    }
+    if (second.value % 30 == 0 && !(minute.value == 0 && second.value == 0)) {
+        highBeep();
+        setTimeout(highBeep, 500);
+    }
+    if (minute.value == 0 && second.value == 0) {
+        endGong();
+    }
+
+    if (minute.value == 0 && second.value == 0) {
+
+        if (redScore == blueScore) {
+            for (let i = 0; i < decision.length; i++) {
+                decision[i].removeAttribute('disabled');
+            }
+        } else {
+            if (blueScore > redScore) {
+                document.getElementById("blue-by-points").removeAttribute('disabled');
+            }
+
+            if (redScore > blueScore) {
+                document.getElementById("red-by-points").removeAttribute('disabled');
+            }
+        }
     }
 
     //End Minutes
@@ -141,6 +173,7 @@ pause.addEventListener('click', function(){
 })
 
 play.addEventListener('click', function () {
+    highBeep();
     isPaused = false;
 })
 
@@ -149,6 +182,22 @@ function leadingZeros(input) {
         input.value = '0' + input.value;
     }
 }
+
+function beep() {
+    document.getElementById('start-gong').play();
+}
+function highBeep() {
+    document.getElementById('high-beep').play();
+}
+function endGong() {
+    document.getElementById('end-gong').play();
+}
+
+
+
+
+
+
 
 
 
