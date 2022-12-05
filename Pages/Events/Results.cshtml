@@ -3,10 +3,10 @@
 @{
 }
 <br />
-<h1>This Is the Results Page</h1>
+<h1 class="text-center">Competitor Results</h1>
 <br>
 
-<table>
+<table class="table">
     <thead>
         <tr>
             <th>
@@ -18,20 +18,61 @@
             <th>
                 Last Name
             </th>
+            <th>
+                Wins
+            </th>
+            <th>
+                Losses
+            </th>
+            <th>
+                Byes
+            </th>
+            <th>
+                Bracket
+            </th>
         </tr>
     </thead>
-</table>
-
-    <ul>
+    <tbody>
         @foreach (var competitor in Model.Results)
         {
-            <li>Place: @competitor.Place @competitor.FirstName @competitor.LastName Wins: @competitor.Wins Losses: @competitor.Losses Byes: @competitor.Byes Bracket @competitor.Bracket</li>
+            <tr>
+                <td>
+                    @competitor.Place
+                </td>
+                <td>
+                    @competitor.FirstName
+                </td>
+                <td>
+                    @competitor.LastName
+                </td>
+                <td>
+                    @competitor.Wins
+                </td>
+                <td>
+                    @competitor.Losses
+                </td>
+                <td>
+                    @competitor.Byes
+                </td>
+                <td>
+                    @competitor.Bracket
+                </td>
+            </tr>
         }
-    </ul>
-
-<form method="post">
-    <input type="submit" value="Reset Competitors for another event" asp-page-handler="Results" />
-</form>
-
-<a asp-page="/Events/History">View Results by Match</a> <br />
-<a asp-page="/Competitors/Index">View Competitors Homepage (Keep Data)</a>
+    </tbody>
+</table>
+<div class="container outline">
+    <div class="row outline">
+        <div class="col outline">
+            <form method="post">
+                <input type="submit" value="Reset Competitors for another event" asp-page-handler="Results" id="change-style" />
+            </form>
+        </div>
+        <div class="col outline">
+            <a asp-page="/Events/History">View Results by Match</a>
+        </div>
+        <div class="col outline">
+            <a asp-page="/Competitors/Index">Back to Setup (Keep Data)</a>
+        </div>
+    </div>
+</div>
