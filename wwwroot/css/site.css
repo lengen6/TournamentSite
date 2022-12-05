@@ -61,3 +61,10 @@ input[disabled]{
 button[disabled] {
     color: lightgray;
 }
+#big-pic {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    /*height: 600px;*/
+}

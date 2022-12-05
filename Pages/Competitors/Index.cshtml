@@ -72,11 +72,21 @@
 </table>
 
 
-    <form method="post">
-    <label asp-for="@Model.Elimination" class="control-label"></label>
-    <select asp-for="@Model.Elimination" class="form-control">
-        <option value="1">-- 1 --</option>
-        <option value="2">-- 2 --</option>
-    </select>
-    <input type="submit" value="Start Event" asp-page-handler="Index" />
-    </form>
+   <div class="container">
+       <div class="row">
+           <div class="col d-flex justify-content-center">
+            <form method="post" class="text-center">
+                <label asp-for="@Model.Elimination" class="control-label">No. of Eliminations</label>
+                <select asp-for="@Model.Elimination" class="form-control text-center">
+                <option value="1">-- 1 --</option>
+                <option value="2">-- 2 --</option>
+                </select>
+                <br />
+                <input type="submit" value="Click to Start Event" asp-page-handler="Index"/>
+            </form>
+             <br />
+           </div>
+       </div>
+   </div>
+    
+    

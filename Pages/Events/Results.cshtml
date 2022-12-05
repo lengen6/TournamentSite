@@ -2,8 +2,25 @@
 @model TieRenTournament.Pages.Events.ResultsModel
 @{
 }
-
+<br />
 <h1>This Is the Results Page</h1>
+<br>
+
+<table>
+    <thead>
+        <tr>
+            <th>
+                Place
+            </th>
+            <th>
+                First Name
+            </th>
+            <th>
+                Last Name
+            </th>
+        </tr>
+    </thead>
+</table>
 
     <ul>
         @foreach (var competitor in Model.Results)
